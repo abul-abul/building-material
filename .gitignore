@@ -7,6 +7,7 @@ app/config/parameters.yml
 # Symfony directories
 vendor/*
 nbproject/*
+var/sessions/dev/
 *var/logs/*
 *var/cache/*
 *var/session/*

@@ -1,0 +1,23 @@
+#groups:
+#      sonata.admin.group.media:
+#         label: Media
+#        icon:  '<i class="fa fa-file"></i>'
+#        items:
+#          - config.media.admin
+#          - config.gallery.admin
+
+##########school
+services:
+      admin.school.category:
+          class: AppBundle\Admin\CategoryAdmin
+          arguments: [~, AppBundle\Entity\Category, ~]
+          tags:
+              - {
+                  name: sonata.admin,
+                  manager_type: orm,
+                  label:  Category,
+                  group: "School",
+                  icon: '<i class="fa fa-users"></i>'
+                 }
+          public: true
+
