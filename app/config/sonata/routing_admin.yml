@@ -15,9 +15,63 @@ services:
               - {
                   name: sonata.admin,
                   manager_type: orm,
-                  label:  Category,
-                  group: "School",
+                  label:  Категория,
+                  group: "Категория",
                   icon: '<i class="fa fa-users"></i>'
                  }
           public: true
 
+      admin.product:
+                class: AppBundle\Admin\ProductAdmin
+                arguments: [~, AppBundle\Entity\Product, ~]
+                tags:
+                    - {
+                        name: sonata.admin,
+                        manager_type: orm,
+                        label:  товар,
+                        group: "Добавить товар",
+                        icon: '<i class="fa fa-users"></i>'
+                       }
+                public: true
+
+      admin.home.silder:
+                class: AppBundle\Admin\HomeSilderAdmin
+                arguments: [~, AppBundle\Entity\HomeSlider, ~]
+                tags:
+                    - {
+                        name: sonata.admin,
+                        manager_type: orm,
+                        label:  Картинки,
+                        group: "Главная страница",
+                        icon: '<i class="fa fa-users"></i>'
+                       }
+                public: true
+
+
+
+      admin.call.request:
+                class: AppBundle\Admin\CallRequestAdmin
+                arguments: [~, AppBundle\Entity\CallRequest, ~]
+                tags:
+                    - {
+                        name: sonata.admin,
+                        manager_type: orm,
+                        label:  Заказать звонок,
+                        group: "Заказать звонок",
+                        icon: '<i class="fa fa-users"></i>'
+                       }
+                public: true
+
+
+      admin.buy:
+                class: AppBundle\Admin\BuyAdmin
+                arguments: [~, AppBundle\Entity\Buy, ~]
+                tags:
+                    - {
+                        name: sonata.admin,
+                        manager_type: orm,
+                        label:  заказ продукта,
+                        group: "Заказы",
+                        icon: '<i class="fa fa-users"></i>'
+                       }
+                public: true

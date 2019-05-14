@@ -8,6 +8,7 @@ app/config/parameters.yml
 vendor/*
 nbproject/*
 var/sessions/dev/
+var/sessions/prod/
 *var/logs/*
 *var/cache/*
 *var/session/*

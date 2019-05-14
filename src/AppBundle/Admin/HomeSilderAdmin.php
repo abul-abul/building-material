@@ -9,7 +9,7 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-class CategoryAdmin extends Admin
+class HomeSilderAdmin extends Admin
 {
 
     /**
@@ -23,6 +23,9 @@ class CategoryAdmin extends Admin
             ->add('name', null, array(
                 'label' => 'Имя',
             ))
+            ->add('description', null, array(
+                'label' => 'Описание',
+            ))
         ;
     }
 
@@ -33,7 +36,13 @@ class CategoryAdmin extends Admin
             ->add('name', null, array(
                 'label' => 'Имя',
             ))
+            ->add('description', null, array(
+                'label' => 'Описание',
+            ))
 
+            ->add('image', 'sonata_type_model_list',array(
+                'label' => 'Картинки',
+            ), array('required' => false), array('link_parameters' => array('context' => 'default')))
         ;
     }
 
@@ -45,6 +54,9 @@ class CategoryAdmin extends Admin
             ->add('name', null, array(
                 'label' => 'Имя',
             ))
+            ->add('description', null, array(
+                'label' => 'Описание',
+            ))
         ;
     }
 
@@ -55,6 +67,9 @@ class CategoryAdmin extends Admin
             ->add('id')
             ->add('name', null, array(
                 'label' => 'Имя',
+            ))
+            ->add('description', null, array(
+                'label' => 'Описание',
             ))
             ->add('_action', 'actions', array(
                 'actions' => array(

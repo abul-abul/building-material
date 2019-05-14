@@ -9,7 +9,7 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-class CategoryAdmin extends Admin
+class CallRequestAdmin extends Admin
 {
 
     /**
@@ -23,7 +23,12 @@ class CategoryAdmin extends Admin
             ->add('name', null, array(
                 'label' => 'Имя',
             ))
+            ->add('phone', null, array(
+                'label' => 'Телефон',
+            ))
+
         ;
+
     }
 
     // Fields to be shown on create/edit forms
@@ -32,6 +37,9 @@ class CategoryAdmin extends Admin
         $formMapper
             ->add('name', null, array(
                 'label' => 'Имя',
+            ))
+            ->add('phone', null, array(
+                'label' => 'Телефон',
             ))
 
         ;
@@ -42,9 +50,10 @@ class CategoryAdmin extends Admin
     {
         $datagridMapper
             ->add('id')
-            ->add('name', null, array(
-                'label' => 'Имя',
+            ->add('phone', null, array(
+                'label' => 'Телефон',
             ))
+
         ;
     }
 
@@ -53,9 +62,10 @@ class CategoryAdmin extends Admin
     {
         $listMapper
             ->add('id')
-            ->add('name', null, array(
-                'label' => 'Имя',
+            ->add('phone', null, array(
+                'label' => 'Телефон',
             ))
+
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),

@@ -23,14 +23,23 @@ class Category
 
     /**
      * @var
-     * @ORM\Column(name="name", type="string", unique=true)
+     * @ORM\Column(name="name", type="string", nullable=false)
      */
     protected $name;
 
 
+    /**
+     * @ORM\OneToMany(targetEntity="Product", mappedBy="category",  cascade={"persist", "remove"})
+     */
+    protected $product;
 
-
-
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return (string) $this->getName();
+    }
 
     /**
      * Get id.
@@ -64,5 +73,48 @@ class Category
     public function getName()
     {
         return $this->name;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->product = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add product.
+     *
+     * @param \AppBundle\Entity\Product $product
+     *
+     * @return Category
+     */
+    public function addProduct(\AppBundle\Entity\Product $product)
+    {
+        $this->product[] = $product;
+
+        return $this;
+    }
+
+    /**
+     * Remove product.
+     *
+     * @param \AppBundle\Entity\Product $product
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeProduct(\AppBundle\Entity\Product $product)
+    {
+        return $this->product->removeElement($product);
+    }
+
+    /**
+     * Get product.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getProduct()
+    {
+        return $this->product;
     }
 }
