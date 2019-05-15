@@ -3,510 +3,163 @@
 
 
 {% block main %}
-
-    <div class="page_container">
-
-
-        <div class="main_content ">
-            <!-- BEGIN content_for_index -->
-            <div id="shopify-section-1548077438942" class="shopify-section index-section">
-
-
-                <div class="section section_homepage section_slideshow_full_width section_slideshow__medium swiper-container"
-                     id="slideshow_1548077438942" data-autoplay="false" data-speed="5000">
-                    <div class="swiper-wrapper">
-
-
-                        <div class="swiper-slide image_slide">
-
-                            <div class="img_placeholder__wrap img_placeholder__medium"
-                                 style="background-image: url( https://cdn.shopify.com/s/files/1/0821/7433/files/slide1_image_2048x600_crop_top.jpg?v=1548243248 );"></div>
-
-
-                            <a class="slide_caption position_right" href="/collections/air-tools">
-
-                                <div class="container">
-                                    <div class="caption_text">
-                                        <h2>Stihl</h2>
-                                        <p>choose from a great selection</p>
-
-
-                                        <div class="slider_circle">
-                                            <div class="inside">
-                                                <h3>$368</h3>
-                                                <h5>20% OFF</h5>
-                                            </div>
-                                        </div>
-
-
-                                    </div>
-                                </div>
-
-                            </a>
-
-                        </div>
-
-
-
-
-                        <div id="pagination_1548077438942" class="swiper_pagination"></div>
-
-                        <div id="slider_prev_1548077438942" class="swiper_btn swiper_btn__prev"></div>
-                        <div id="slider_next_1548077438942" class="swiper_btn swiper_btn__next"></div>
-
-                    </div>
-
-                </div>
-
-
-            </div>
-            <div id="shopify-section-1548264971712"
-                 class="shopify-section section section_homepage section_gallery_custom">
-
-
-                <div class="section_gallery__4 style_1">
-
-
-                    <div class="row galery_wrap">
-
-
-                        <div class="col-xs-3 custom_showcase gallery_custom">
-                            <div class="gallery_item">
-
-                                <div class="img_placeholder__wrap img_placeholder__medium"
-                                     style="background-image: url( //cdn.shopify.com/s/files/1/0821/7433/files/custom_showcase1_img.png?v=1548261901 );"></div>
-
-
-                                <div class="item_caption ins">
-                                    <div class="caption_text">
-
-                                        <div class="page_heading"><p><strong>CORDLESS</strong></p>
-                                            <p>tools</p></div>
-
-
-                                        <p class="text_block">We assure you that our goods have a great number of
-                                            advantages and it is very important for the customers.</p>
-
-
-                                        <a class="btn gallery_btn" href="/collections/air-compressors">shop now!</a>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-xs-3 custom_showcase gallery_custom">
-                            <div class="gallery_item">
-
-                                <div class="img_placeholder__wrap img_placeholder__medium"
-                                     style="background-image: url( //cdn.shopify.com/s/files/1/0821/7433/files/custom_showcase2_img.png?v=1548261915 );"></div>
-
-
-                                <div class="item_caption ins">
-                                    <div class="caption_text">
-
-                                        <div class="page_heading"><p><strong>ELECTRICIANS</strong></p>
-                                            <p>TOOLS</p></div>
-
-
-                                        <p class="text_block">The products of our store are the perfect combination of a
-                                            real reliability and durability.</p>
-
-
-                                        <a class="btn gallery_btn" href="/collections/air-compressors">shop now!</a>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-xs-3 custom_showcase gallery_custom">
-                            <div class="gallery_item">
-
-                                <div class="img_placeholder__wrap img_placeholder__medium"
-                                     style="background-image: url( //cdn.shopify.com/s/files/1/0821/7433/files/custom_showcase3_img.png?v=1548261922 );"></div>
-
-
-                                <div class="item_caption ins">
-                                    <div class="caption_text">
-
-                                        <div class="page_heading"><p><strong>Power</strong></p>
-                                            <p>TOOLS</p></div>
-
-
-                                        <p class="text_block">You know that nowadays we have faced with the problem of
-                                            fakes. It is so easy to become a victim of cheaters.</p>
-
-
-                                        <a class="btn gallery_btn" href="/collections/electrical">shop now!</a>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-xs-3 custom_showcase gallery_custom">
-                            <div class="gallery_item">
-
-                                <div class="img_placeholder__wrap img_placeholder__medium"
-                                     style="background-image: url( //cdn.shopify.com/s/files/1/0821/7433/files/custom_showcase4_img_6657f54a-497f-4130-b667-0135c580d580.png?v=1548326452 );"></div>
-
-
-                                <div class="item_caption ins">
-                                    <div class="caption_text">
-
-                                        <div class="page_heading"><p><strong>Hand</strong></p>
-                                            <p>TOOLS</p></div>
-
-
-                                        <p class="text_block">It is so easy to become a victim of cheaters.</p>
-
-
-                                        <a class="btn gallery_btn" href="/collections/construction">shop now!</a>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-                    </div>
-
-                </div>
-
-            </div>
-            <div id="shopify-section-1548336186156"
-                 class="shopify-section section section_homepage section_custom-content">
+    <!-- slider area start -->
+    <div class="hero-area">
+        <div class="hero-slider-active slider-arrow-style slick-dot-style hero-dot">
+
+            {% for homeSilder in homeSilders %}
+            <div class="hero-single-slide hero-2 hero-2__Style-5 d-flex align-items-center" style="background-image: url({% path homeSilder.image,'reference' %});">
                 <div class="container">
-
-                    <div class="section_heading"><p><strong>WELCOME</strong>&nbsp;TO OUR STORE!</p></div>
-
-
-                    <div class="row">
-
-
-                        <div class="col-xs-12 col_item item_2_1">
-                            <div class="custom_content__item item_text">
-
-                                <div class="item_text item_text__left">
-
-
-                                    <div class="item_text__content"><p>The products of our store are the perfect
-                                            combination of a real reliability and durability. We assure you that our
-                                            goods have a great number of advantages and it is very important for the
-                                            customers. Our products are the real bestsellers because they have numerous
-                                            devoted clients all over the country and as you know - those positive
-                                            testimonials are the best advertising. This fact proves that our company
-                                            takes the leading place among the competing ones. We assure you that our
-                                            goods have a great number of advantages and it is very important for the
-                                            customers. Our products are the real bestsellers because they have numerous
-                                            devoted clients all over the country and as you know - those positive
-                                            testimonials are the best advertising.</p></div>
-
-                                </div>
-
-
-                            </div>
-                        </div>
-
-
-                    </div>
-
-                </div>
-
-            </div>
-            <div id="shopify-section-1548077834316"
-                 class="shopify-section section section_homepage section_products-carousel">
-                <div class="carousel_wrap container">
-
-                    <h2 class="section_heading">Featured products</h2>
-
-
-                    <div class="products_carousel " id="products_carousel_1548077834316" data-products="10"
-                         data-rows="2" data-dir="2">
-                        <div class="swiper-container swiper_1">
-                            <div class="swiper-wrapper product_listing__main">
-
-
-
-                                <div class="swiper-slide">
-
-                                    <div class="product_item">
-                                        <div class="product_img">
-                                            <a class="img_change"
-                                               href="/products/crescent-ctk70mp-70-piece-mechanics-tool-set-with-storage-case">
-                                                <img class="img__1"
-                                                     src="https://cdn.shopify.com/s/files/1/0821/7433/products/crescent_ctk70mp_70-piece_mechanics_tool_set_with_storage_case_1_270x270_crop_center.png?v=1432741501"
-                                                     alt="Crescent CTK70MP 70-Piece Mechanics Tool Set with Storage Case">
-
-                                                <img class="img__2"
-                                                     src="https://cdn.shopify.com/s/files/1/0821/7433/products/crescent_ctk70mp_70-piece_mechanics_tool_set_with_storage_case_2_270x270_crop_center.png?v=1432741501"
-                                                     alt="Crescent CTK70MP 70-Piece Mechanics Tool Set with Storage Case"/>
-
-
-                                                <span class="product_badge new">new!</span>
-
-
-                                                <span class="product_badge sale">sale!</span>
-
-
-                                            </a>
-                                        </div>
-
-                                        <div class="product_info">
-                                            <div class="product_prop">
-                                                <p class="product_price">
-
-
-                                                    <span class="money money_sale">$100.00</span>
-
-
-                                                    <span class="money">$78.00</span>
-
-
-                                                </p>
-
-                                                <p class="product_color"></p>
-                                            </div>
-
-                                            <p class="product_name">
-
-                                                <a href="/products/crescent-ctk70mp-70-piece-mechanics-tool-set-with-storage-case">Crescent
-                                                    CTK70MP 70-Piece M...</a>
-
-                                            </p>
-
-
-                                            <p class="product_desc product_desc__short">You can buy the premium quality
-                                                goods at a fair price. Our company cares about the clients and ne...</p>
-                                            <p class="product_desc product_desc__long">You can buy the premium quality
-                                                goods at a fair price. Our company cares about the clients and never
-                                                lets them down. We are the constant participants of different social and
-                                                technological researches. Our goods have a great number of different
-                                                useful and functional options. The products of our store are
-                                                well-designed and very user-friendly. We are always in touch with the
-                                                latest fashion and hi-tech tendencies.</p>
-
-
-                                            <div class="product_links">
-                                                <form method="post" action="/cart/add" class="add_to_cart_form">
-
-
-                                                    <input type="hidden" name="id" value="3010650817"/>
-                                                    <button class="btn-cart" type="submit"><i
-                                                                class="fa fa-shopping-cart"></i><span>Add to cart</span>
-                                                    </button>
-
-
-                                                </form>
-
-
-
-
-
-                                            </div>
-                                        </div>
-
-                                        <div class="clearfix"></div>
-                                    </div>
-
-                                </div>
-
-
-
-
-
-
-                            </div>
-
-                            <div class="carousel_1_prev"></div>
-                            <div class="carousel_1_next"></div>
-                        </div>
-
-                        <div class="swiper-container swiper_2">
-                            <div class="swiper-wrapper product_listing__main">
-
-
-                                <div class="swiper-slide">
-
-                                    <div class="product_item">
-                                        <div class="product_img">
-                                            <a class="img_change" href="/products/dewalt-dw920k-2">
-                                                <img class="img__1"
-                                                     src="https://cdn.shopify.com/s/files/1/0821/7433/products/dewalt_dw920k-2_1_270x270_crop_center.png?v=1432741559"
-                                                     alt="DEWALT DW920K-2">
-
-                                                <img class="img__2"
-                                                     src="https://cdn.shopify.com/s/files/1/0821/7433/products/dewalt_dw920k-2_2_270x270_crop_center.png?v=1432741559"
-                                                     alt="DEWALT DW920K-2"/>
-
-
-                                                <span class="product_badge new">new!</span>
-
-
-                                            </a>
-                                        </div>
-
-                                        <div class="product_info">
-                                            <div class="product_prop">
-                                                <p class="product_price">
-
-
-                                                    <span class="money">$420.00</span>
-
-
-                                                </p>
-
-                                                <p class="product_color"></p>
-                                            </div>
-
-                                            <p class="product_name">
-
-                                                <a href="/products/dewalt-dw920k-2">DEWALT DW920K-2</a>
-
-                                            </p>
-
-
-                                            <p class="product_desc product_desc__short">We observe only branded
-                                                commodities policy. You can buy the premium quality goods at a fair
-                                                price...</p>
-                                            <p class="product_desc product_desc__long">We observe only branded
-                                                commodities policy. You can buy the premium quality goods at a fair
-                                                price. Our company cares about the clients and never lets them down. We
-                                                are the constant participants of different social and technological
-                                                researches. Our goods have a great number of different useful and
-                                                functional options. The products of our store are well-designed and very
-                                                user-friendly.</p>
-
-
-                                            <div class="product_links">
-                                                <form method="post" action="/cart/add" class="add_to_cart_form">
-
-
-                                                    <input type="hidden" name="id" value="3010677185"/>
-                                                    <button class="btn-cart" type="submit"><i
-                                                                class="fa fa-shopping-cart"></i><span>Add to cart</span>
-                                                    </button>
-
-
-                                                </form>
-
-
-
-
-
-                                            </div>
-                                        </div>
-
-                                        <div class="clearfix"></div>
-                                    </div>
-
-                                </div>
-
-
-                            </div>
-
-                            <div class="carousel_2_prev"></div>
-                            <div class="carousel_2_next"></div>
-
-                        </div>
-
-                        <div id="carousel_swiper__prev_1548077834316"
-                             class="swiper_btn swiper_btn__prev swiper_2row"></div>
-                        <div id="carousel_swiper__next_1548077834316"
-                             class="swiper_btn swiper_btn__next swiper_2row"></div>
-
-                    </div>
-
-
-                </div>
-
-
-            </div>
-            <div id="shopify-section-1548077926698"
-                 class="shopify-section section section_homepage section_image-with-text-overlay">
-
-
-                <div class="section_wrap flexible_block__medium parallax_block">
-
-                    <div class="img_placeholder__wrap img_placeholder__medium parallax_layer"
-                         style="background-image: url( https://cdn.shopify.com/s/files/1/0821/7433/files/custom_bottom_bg_2048x1100_crop_top.jpg?v=1548344778 );"></div>
-
-
-                    <div class="section_txt align_center full_width">
-                        <div class="container">
-                            <div class="caption_text ">
-
-
-                                <div class="row">
-
-                                    <div class="wow col-sm-6 custom_bottom">
-                                        <a class="inner_block" href="/collections/air-compressors">
-                                            <i class="fa fa-dropbox"></i>
-                                            <div class="custom_bottom_caption">
-                                                <h3>SSL CERTIFICATE</h3>
-                                                <p>If the website has an SLL certificate, this means that the owners
-                                                    care about your shopping experience being secure, safe and sound and
-                                                    want to make sure that all the data (including financial) that you
-                                                    enter on our website will be securely encrypted!</p>
-                                            </div>
-                                        </a>
-                                    </div>
-
-                                    <div class="wow col-sm-6 custom_bottom">
-                                        <a class="inner_block" href="/collections/electrical">
-                                            <i class="fa fa-thumbs-o-up"></i>
-                                            <div class="custom_bottom_caption">
-                                                <h3>MULTIPLE GATEWAYS</h3>
-                                                <p>When we were considering which payment gateways to use on our
-                                                    website, the choice narrowed down to 5 most universal ones: Visa;
-                                                    MasterCard; PayPal; Discover; Stripe.</p>
-                                            </div>
-                                        </a>
-                                    </div>
-
-                                    <div class="wow col-sm-6 custom_bottom">
-                                        <a class="inner_block" href="/collections/commercial-trucking">
-                                            <i class="fa fa-truck"></i>
-                                            <div class="custom_bottom_caption">
-                                                <h3>24/7 CUSTOMER SUPPORT</h3>
-                                                <p>Also, it is comforting to know that should you experience any kind of
-                                                    technical bump in the road during the checkout process, you can
-                                                    always address our customer support department with your billing
-                                                    questions!</p>
-                                            </div>
-                                        </a>
-                                    </div>
-
-                                    <div class="wow col-sm-6 custom_bottom">
-                                        <a class="inner_block" href="/collections/air-tools">
-                                            <i class="fa fa-shield"></i>
-                                            <div class="custom_bottom_caption">
-                                                <h3>CAN I TRACK MY ORDER?</h3>
-                                                <p>We rely on a global network of shipping partners (UPS, FedEx, DHL) as
-                                                    well as local postal services (USPS) to get your order to your
-                                                    doorstep as soon as possible.</p>
-                                            </div>
-                                        </a>
-                                    </div>
-
-                                </div>
-
-
-                            </div>
-                        </div>
+                    <div class="slider-content text-center">
+                        <h1>{{ homeSilder.name }}</h1>
+                        <h3 class="text-white">{{ homeSilder.description }}</h3>
+                        {#<a href="shop-grid-left-sidebar.html" class="slider-btn">view collection</a>#}
                     </div>
                 </div>
-
-
             </div>
-            <div id="shopify-section-1548411112577"
-                 class="shopify-section section section_homepage section_blog-articles">
-
-
-
-            </div>
-
-
+            {% endfor %}
         </div>
+    </div>
+    <!-- slider area end -->
+
+
+
+    <!-- featured product area start -->
+    <div class="page-section pt-100 pb-50 pt-md-92 pt-sm-56 pb-sm-10">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-title text-center pb-44">
+                        <p>Последние популярные продукты</p>
+                        <h2 class="text-white">Продукты</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row product-carousel-one spt-2 slick-arrow-style">
+
+                {% for rendProduct in rendProducts %}
+                    <div class="col">
+                        <div class="product-item item-black mb-20">
+                            <div class="product-thumb">
+                                <a href="product-details.html">
+                                    <img src="{% path rendProduct.image,'reference' %}" alt="product image">
+                                </a>
+                                <div class="box-label">
+                                    {#<div class="product-label new">#}
+                                        {#<span>new</span>#}
+                                    {#</div>#}
+                                    {% if rendProduct.rebate != null  %}
+                                        <div class="product-label discount">
+                                            <span>-5%</span>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                                <div class="product-action-link">
+                                    <a href="#" data-toggle="modal" data-target="#quick_view"> <span
+                                                data-toggle="tooltip" data-placement="left" title="Quick view"><i class="ion-ios-eye-outline"></i></span> </a>
+
+                                </div>
+                            </div>
+                            <div class="product-description text-center">
+
+                                <div class="product-name">
+                                    <h3><a href="product-details.html">{{ rendProduct.name }}</a></h3>
+                                </div>
+                                <div class="price-box">
+                                    {% if rendProduct.rebate != null  %}
+                                        <span class="regular-price"> {{ rendProduct.rebate }}</span>
+
+                                        <span class="old-price">
+                                            <del>
+                                                {{ rendProduct.price }}
+
+                                            </del>
+                                        </span>
+                                    {% else %}
+                                        <span class="regular-price">  {{ rendProduct.price }}</span>
+
+                                        <span class="old-price">
+                                            <del>
+                                               {{ rendProduct.rebate }}
+
+                                            </del>
+                                        </span>
+                                    {% endif %}
+                                </div>
+                                <div class="hover-box text-center">
+                                    <div class="product-btn">
+                                        <a data-id="{{ rendProduct.id }}" href="#"><i class="ion-bag"></i>Добавить корзину</a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <!-- featured product area end -->
+
+    <div class="banner-statistic-two">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="banner-content-inner overlay banner-3">
+                        <div class="banner-content banner-content__3 text-center">
+
+                            <h2>Строй маг</h2>
+                            <p>сэкономьте свое время</p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- latest blog area start -->
+    <div class="latest-blog-area pt-100 pb-90 pt-sm-58 pb-sm-50">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-title text-center pb-44">
+
+                        <h2 class="text-white">категории</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="blog-carousel-active row slick-arrow-style">
+                {% for cat in categorys %}
+                    <div class="col">
+                        <div class="blog-item white-text">
+                            <article class="blog-post">
+                                <div class="blog-post-content">
+                                    <div class="blog-top">
+                                        <div class="post-date-time">
+                                            <a href="">
+                                                <span>{{ cat.name }} </span>
+                                            </a>
+
+                                        </div>
+                                        <div class="post-blog-meta">
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="blog-content">
+
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                {% endfor %}
+
+
+
+            </div>
+        </div>
+    </div>
+
 {% endblock %}

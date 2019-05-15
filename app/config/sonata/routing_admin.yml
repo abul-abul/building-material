@@ -21,6 +21,19 @@ services:
                  }
           public: true
 
+      admin.about.site:
+          class: AppBundle\Admin\AboutSiteAdmin
+          arguments: [~, AppBundle\Entity\AboutSite, ~]
+          tags:
+              - {
+                  name: sonata.admin,
+                  manager_type: orm,
+                  label:  О нас,
+                  group: "О нас",
+                  icon: '<i class="fa fa-users"></i>'
+                 }
+          public: true
+
       admin.product:
                 class: AppBundle\Admin\ProductAdmin
                 arguments: [~, AppBundle\Entity\Product, ~]
@@ -75,3 +88,17 @@ services:
                         icon: '<i class="fa fa-users"></i>'
                        }
                 public: true
+
+      admin.info.site:
+                class: AppBundle\Admin\InfoSiteAdmin
+                arguments: [~, AppBundle\Entity\InfoSite, ~]
+                tags:
+                    - {
+                        name: sonata.admin,
+                        manager_type: orm,
+                        label:  Информация о сайте ,
+                        group: "Информация о сайте",
+                        icon: '<i class="fa fa-users"></i>'
+                       }
+                public: true
+
