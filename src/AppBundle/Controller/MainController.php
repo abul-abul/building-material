@@ -10,7 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class MainController extends BaseController
 {
     /**
-     * @Route("/", name="homepage")
+     * @Route("/", name="home")
      * @Template()
      */
     public function homeAction(Request $request)
