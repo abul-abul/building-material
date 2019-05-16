@@ -10,10 +10,10 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class CategoryController extends BaseController
 {
     /**
-     * @Route("/category", name="homepage")
+     * @Route("/category-list", name="category_list")
      * @Template()
      */
-    public function categoryAction($id,Request $request)
+    public function categoryListAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
         $homeSilder =$em->getRepository("AppBundle:HomeSlider")->findAll();

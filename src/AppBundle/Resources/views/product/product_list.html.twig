@@ -1,0 +1,246 @@
+{% extends 'AppBundle::layout.html.twig' %}
+{% block stylesheets %}
+    {{  parent() }}
+    {#<link rel="stylesheet" href="/bundles/main/css/dataTables.bootstrap.min.css">#}
+{% endblock %}
+
+{% block main %}
+
+    <div class="breadcrumb-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="breadcrumb-wrap">
+                        <nav aria-label="breadcrumb">
+                            <ul class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="{{ path('home') }}">Главная страница</a></li>
+
+                                <li class="breadcrumb-item active" aria-current="page">{{ category.name }}</li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <div class="shop-main-wrapper pt-100 pb-100 pt-sm-58 pb-sm-58">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-3 col-lg-4 order-2 order-lg-1">
+                        <div class="sidebar-wrapper mt-md-100 mt-sm-48">
+                            <!-- single sidebar start -->
+                            <div class="sidebar-single">
+                                <div class="sidebar-title">
+                                    <h3>КАТЕГОРИИ</h3>
+                                </div>
+                                <div class="sidebar-body">
+                                    <ul class="sidebar-category">
+                                        {% for category in categorys %}
+                                            <li class="has-children"><a href="#">{{ category.name }}</a>
+                                                <ul class="children" style="display: none;">
+                                                    {% for product in category.product  %}
+                                                        <li>
+                                                            <a href="{{ path('product_inner',{'id' : product.id}) }}">{{ product.name }}</a>
+                                                        </li>
+
+                                                    {% endfor %}
+                                                </ul>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- single sidebar end -->
+
+
+
+
+                            <!-- single sidebar end -->
+
+                            <!-- single sidebar start -->
+                            <div class="sidebar-single">
+                                <div class="sidebar-title">
+                                    <h3>ПРОДУКТЫ</h3>
+                                </div>
+                                <div class="sidebar-body">
+                                    <div class="popular-item-inner">
+
+                                        {% for proRend in productsRend %}
+                                            <div class="popular-item">
+                                                <div class="pop-item-thumb">
+                                                    <a href="{{ path('product_inner',{'id' : proRend.id}) }}">
+                                                        <img src="{% path proRend.image,'reference' %}" alt="">
+                                                    </a>
+                                                </div>
+                                                <div class="pop-item-des">
+                                                    <h4><a href="{{ path('product_inner',{'id' : proRend.id}) }}">{{ proRend.name }}</a></h4>
+
+                                                    {% if proRend.rebate != null  %}
+                                                        <span class="pop-price">{{ proRend.rebate }}</span>
+                                                    {% else %}
+                                                        <span class="pop-price">{{ proRend.price }}</span>
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                       {% endfor %}
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- single sidebar end -->
+
+                            <!-- single sidebar start -->
+
+                            <!-- single sidebar end -->
+                        </div>
+                    </div>
+                    <!-- product view wrapper area start -->
+                    <div class="col-xl-9 col-lg-8 order-1 order-lg-2">
+                        <div class="shop-product-wrapper">
+                            <!-- shop product top wrap start -->
+                            <div class="shop-top-bar">
+                                <div class="row">
+                                    <div class="col-lg-7 col-md-6">
+                                        <div class="top-bar-left">
+                                            <div class="product-view-mode">
+                                                <a href="#" data-target="grid" class=""><i class="fa fa-th"></i></a>
+                                                <a class="active" href="#" data-target="list"><i class="fa fa-list"></i></a>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <!-- shop product top wrap start -->
+                            <!-- product view mode wrapper start -->
+                            <div class="shop-product-wrap row list">
+
+                                {% for product in products %}
+                                <div class="col-xl-4 col-lg-6 col-md-4 col-sm-6">
+                                    <!-- product grid item start -->
+                                    <div class="product-item mb-20">
+                                        <div class="product-thumb">
+                                            <a href="{{ path('product_inner',{'id' : product.id}) }}">
+                                                <img src="{% path product.image,'reference' %}" alt="product image">
+                                            </a>
+
+                                            <div class="product-action-link">
+                                                <a href="#" data-toggle="modal" data-target="#quick_view"> <span data-toggle="tooltip" data-placement="left" title="" data-original-title="Quick view"><i class="ion-ios-eye-outline"></i></span> </a>
+                                                {#<a href="#" data-toggle="tooltip" data-placement="left" title="" data-original-title="Compare"><i class="ion-ios-loop"></i></a>#}
+                                                {#<a href="#" data-toggle="tooltip" data-placement="left" title="" data-original-title="Wishlist"><i class="ion-ios-shuffle"></i></a>#}
+                                            </div>
+                                        </div>
+                                        <div class="product-description text-center">
+                                            <div class="manufacturer">
+                                                {#<p><a href="product-details.html">Fashion Manufacturer</a></p>#}
+                                            </div>
+                                            <div class="product-name">
+                                                <h3><a href="{{ path('product_inner',{'id' : product.id}) }}">{{ 	product.name }}</a></h3>
+                                            </div>
+                                            <div class="price-box">
+                                                {% if product.rebate != null  %}
+                                                    <span class="regular-price"> {{ product.rebate }}</span>
+
+                                                    <span class="old-price">
+                                                        <del>
+                                                            {{ product.price }}
+
+                                                        </del>
+                                                    </span>
+                                                {% else %}
+                                                    <span class="regular-price">  {{ product.price }}</span>
+
+                                                    <span class="old-price">
+                                                        <del>
+                                                           {{ product.rebate }}
+
+                                                        </del>
+                                                    </span>
+                                                {% endif %}
+                                            </div>
+                                            <div class="product-btn">
+                                                <a href="#"><i class="ion-bag"></i>Добавить корзину</a>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <!-- product grid item end -->
+                                    <!-- product list item start -->
+                                    <div class="product-list-item mb-20">
+                                        <div class="product-thumb">
+                                            <a href="{{ path('product_inner',{'id' : product.id}) }}">
+                                                <img src="{% path product.image,'reference' %}" alt="product image">
+                                            </a>
+                                            {#<div class="box-label">#}
+                                                {#<div class="product-label new">#}
+                                                    {#<span>new</span>#}
+                                                {#</div>#}
+                                                {#<div class="product-label discount">#}
+                                                    {#<span>-5%</span>#}
+                                                {#</div>#}
+                                            {#</div>#}
+                                            <div class="product-action-link">
+                                                <a href="#" data-toggle="modal" data-target="#quick_view"> <span data-toggle="tooltip" data-placement="left" title="" data-original-title="Quick view"><i class="ion-ios-eye-outline"></i></span> </a>
+
+
+                                            </div>
+                                        </div>
+                                        <div class="product-list-content">
+                                            <h4><a href="#"></a></h4>
+                                            <h3><a href="{{ path('product_inner',{'id' : product.id}) }}">{{ 	product.name }}</a></h3>
+
+                                            <div class="pricebox">
+                                                {% if product.rebate != null  %}
+                                                    <span class="regular-price"> {{ product.rebate }}</span>
+
+                                                    <span class="old-price">
+                                                        <del>
+                                                            {{ product.price }}
+
+                                                        </del>
+                                                    </span>
+                                                {% else %}
+                                                    <span class="regular-price">  {{ product.price }}</span>
+
+                                                    <span class="old-price">
+                                                        <del>
+                                                           {{ product.rebate }}
+
+                                                        </del>
+                                                    </span>
+                                                {% endif %}
+                                            </div>
+                                            <p>
+                                                {{ product.description }}
+                                            </p>
+                                            <div class="product-btn product-btn__color">
+                                                <a href="#"><i class="ion-bag"></i>Добавить корзину</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- product list item end -->
+                                </div>
+                                {% endfor %}
+                            </div>
+                            <!-- product view mode wrapper start -->
+                        </div>
+                        <!-- start pagination area -->
+                        <div class="paginatoin-area text-center mt-18">
+                            <ul class="pagination-box">
+                                <li><a class="Previous" href="#">Previous</a></li>
+                                <li class="active"><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a class="Next" href="#"> Next </a></li>
+                            </ul>
+                        </div>
+                        <!-- end pagination area -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}
