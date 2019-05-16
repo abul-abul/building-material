@@ -54,7 +54,30 @@ class ProductController extends BaseController
      */
     public function productInnerAction($id,Request $request)
     {
-        dump($id);die;
+        $em = $this->getDoctrine()->getManager();
+        $product =$em->getRepository("AppBundle:Product")->find($id);
+        $categorys =$em->getRepository("AppBundle:Category")->findAll();
+        $query = 'SELECT id FROM  product
+                ORDER BY RAND()
+                LIMIT 4';
+
+
+
+        $statement = $em->getConnection()->prepare($query);
+
+        $statement->execute();
+
+        $rendProduct = $statement->fetchAll();
+        $productsRend = [];
+        foreach ($rendProduct as $rendid){
+            $productRand =$em->getRepository("AppBundle:Product")->find($rendid['id']);
+            array_push($productsRend,$productRand);
+        }
+       return [
+           'product'=>$product,
+           'productsRend' => $productsRend,
+           'categorys'=>$categorys
+       ];
     }
 
 

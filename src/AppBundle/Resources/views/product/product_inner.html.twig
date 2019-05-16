@@ -1,0 +1,516 @@
+{% extends 'AppBundle::layout.html.twig' %}
+{% block stylesheets %}
+    {{  parent() }}
+    <link href='{{ asset('bundles/app/css/template/style.css') }}' rel='stylesheet' type='text/css'>
+{% endblock %}
+
+{% block main %}
+
+    <div class="breadcrumb-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="breadcrumb-wrap">
+                        <nav aria-label="breadcrumb">
+                            <ul class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="{{ path('home') }}">Главная страница</a></li>
+
+                                <li class="breadcrumb-item active" aria-current="page">{{ product.name }}</li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- page main wrapper start -->
+    <main>
+        <div class="product-details-wrapper pt-100 pb-14 pt-sm-58">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-9">
+                        <!-- product details inner end -->
+                        <div class="product-details-inner">
+                            <div class="row">
+                                <div class="col-lg-5">
+                                    <div class="product-large-slider mb-20 slider-arrow-style slider-arrow-style__style-2">
+
+                                        {% for i,galleryHasMedia in product.gallery.galleryHasMedias %}
+                                            <div class="pro-large-img img-zoom" id="img1">
+                                                <img src="{% path galleryHasMedia.media, 'reference' %}" alt="" />
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                    <div class="pro-nav slick-padding2 slider-arrow-style slider-arrow-style__style-2">
+                                        {% for i,galleryHasMedia in product.gallery.galleryHasMedias %}
+                                            <div class="pro-nav-thumb">
+                                                <img src="{% path galleryHasMedia.media, 'reference' %}" alt="" />
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                                <div class="col-lg-7">
+                                    <div class="product-details-des pt-md-98 pt-sm-58">
+                                        <h3>{{ product.name }}</h3>
+
+                                        <div class="pricebox">
+                                            {% if product.rebate != null  %}
+                                                <span class="regular-price">{{ product.rebate }}</span>
+                                            {% else %}
+                                                <span class="regular-price">{{ product.price }}</span>
+                                            {% endif %}
+
+                                        </div>
+                                        <p>
+                                            {{ product.description }}
+                                        </p>
+                                        <div class="quantity-cart-box d-flex align-items-center mb-24">
+                                            <div class="quantity">
+                                                <div class="pro-qty"><input type="text" value="1"></div>
+                                            </div>
+                                            <div class="product-btn product-btn__color">
+                                                <a href="#"><i class="ion-bag"></i>Добавить корзину</a>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- product details inner end -->
+                        <!-- product details reviews start -->
+                        <div class="product-details-reviews pt-98 pt-sm-58">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="product-review-info">
+                                        <ul class="nav review-tab">
+
+                                            <li>
+                                                <a class="active" data-toggle="tab" href="#tab_three">reviews</a>
+                                            </li>
+                                        </ul>
+                                        <div class="tab-content reviews-tab">
+
+
+                                            <div class="tab-pane fade show active" id="tab_three">
+                                                <form action="#" class="review-form">
+
+
+                                                    <div class="form-group row">
+                                                        <div class="col">
+                                                            <label class="col-form-label"><span class="text-danger">*</span> firstname</label>
+                                                            <input name="firstname" type="text" class="form-control" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <div class="col">
+                                                            <label class="col-form-label"><span class="text-danger">*</span> lastname</label>
+                                                            <input name="lastname" type="email" class="form-control" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <div class="col">
+                                                            <label class="col-form-label"><span class="text-danger">*</span> email</label>
+                                                            <input  name="email" type="email" class="form-control" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <div class="col">
+                                                            <label class="col-form-label"><span class="text-danger">*</span> address</label>
+                                                            <input  name="address" type="email" class="form-control" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <div class="col">
+                                                            <label class="col-form-label"><span class="text-danger">*</span> phone</label>
+                                                            <input  name="phone" type="text" class="form-control" required>
+                                                        </div>
+                                                    </div>
+                                                    <input name="product_id" type="hidden" value="{{ product.id }}">
+
+                                                    <div class="buttons">
+                                                        <button class="sqr-btn" type="submit">Continue</button>
+                                                    </div>
+                                                </form> <!-- end of review-form -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- product details reviews end -->
+                        <!-- featured product area start -->
+                        <div class="page-section pt-100 pt-sm-58">
+                            <div class="section-title text-center pb-44">
+                                <p>The latest products</p>
+                                <h2>related products</h2>
+                            </div>
+                            <div class="releted-product spt slick-padding slick-arrow-style">
+                                <div class="product-item mb-20">
+                                    <div class="product-thumb">
+                                        <a href="product-details.html">
+                                            <img src="assets/img/product/product-1.jpg" alt="product image">
+                                        </a>
+                                        <div class="box-label">
+                                            <div class="product-label new">
+                                                <span>new</span>
+                                            </div>
+                                            <div class="product-label discount">
+                                                <span>-5%</span>
+                                            </div>
+                                        </div>
+                                        <div class="product-action-link">
+                                            <a href="#" data-toggle="modal" data-target="#quick_view"> <span
+                                                        data-toggle="tooltip" data-placement="left" title="Quick view"><i class="ion-ios-eye-outline"></i></span> </a>
+                                            <a href="#" data-toggle="tooltip" data-placement="left" title="Compare"><i
+                                                        class="ion-ios-loop"></i></a>
+                                            <a href="#" data-toggle="tooltip" data-placement="left" title="Wishlist"><i
+                                                        class="ion-ios-shuffle"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="product-description text-center">
+                                        <div class="manufacturer">
+                                            <p><a href="product-details.html">Fashion Manufacturer</a></p>
+                                        </div>
+                                        <div class="product-name">
+                                            <h3><a href="product-details.html">Endeavor Daytrip</a></h3>
+                                        </div>
+                                        <div class="price-box">
+                                            <span class="regular-price">$100.00</span>
+                                            <span class="old-price"><del>$120.00</del></span>
+                                        </div>
+                                        <div class="product-btn">
+                                            <a href="#"><i class="ion-bag"></i>Add to cart</a>
+                                        </div>
+                                        <div class="hover-box text-center">
+                                            <div class="ratings">
+                                                <span><i class="fa fa-star"></i></span>
+                                                <span><i class="fa fa-star"></i></span>
+                                                <span><i class="fa fa-star"></i></span>
+                                                <span><i class="fa fa-star"></i></span>
+                                                <span><i class="fa fa-star"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="product-item mb-20">
+                                    <div class="product-thumb">
+                                        <a href="product-details.html">
+                                            <img src="assets/img/product/product-2.jpg" alt="product image">
+                                        </a>
+                                        <div class="box-label">
+                                            <div class="product-label new">
+                                                <span>new</span>
+                                            </div>
+                                        </div>
+                                        <div class="product-action-link">
+                                            <div class="product-action-link">
+                                                <a href="#" data-toggle="modal" data-target="#quick_view"> <span
+                                                            data-toggle="tooltip" data-placement="left" title="Quick view"><i class="ion-ios-eye-outline"></i></span> </a>
+                                                <a href="#" data-toggle="tooltip" data-placement="left" title="Compare"><i
+                                                            class="ion-ios-loop"></i></a>
+                                                <a href="#" data-toggle="tooltip" data-placement="left" title="Wishlist"><i
+                                                            class="ion-ios-shuffle"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-description text-center">
+                                        <div class="manufacturer">
+                                            <p><a href="product-details.html">Fashion Manufacturer</a></p>
+                                        </div>
+                                        <div class="product-name">
+                                            <h3><a href="product-details.html">Crown Backpacks</a></h3>
+                                        </div>
+                                        <div class="price-box">
+                                            <span class="regular-price">$60.00</span>
+                                            <span class="old-price"><del>$80.00</del></span>
+                                        </div>
+                                        <div class="product-btn">
+                                            <a href="#"><i class="ion-bag"></i>Add to cart</a>
+                                        </div>
+                                        <div class="hover-box text-center">
+                                            <div class="ratings">
+                                                <span><i class="fa fa-star"></i></span>
+                                                <span><i class="fa fa-star"></i></span>
+                                                <span><i class="fa fa-star"></i></span>
+                                                <span><i class="fa fa-star"></i></span>
+                                                <span><i class="fa fa-star"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="product-item mb-20">
+                                    <div class="product-thumb">
+                                        <a href="product-details.html">
+                                            <img src="assets/img/product/product-3.jpg" alt="product image">
+                                        </a>
+                                        <div class="box-label">
+                                            <div class="product-label new">
+                                                <span>new</span>
+                                            </div>
+                                            <div class="product-label discount">
+                                                <span>-15%</span>
+                                            </div>
+                                        </div>
+                                        <div class="product-action-link">
+                                            <div class="product-action-link">
+                                                <a href="#" data-toggle="modal" data-target="#quick_view"> <span
+                                                            data-toggle="tooltip" data-placement="left" title="Quick view"><i class="ion-ios-eye-outline"></i></span> </a>
+                                                <a href="#" data-toggle="tooltip" data-placement="left" title="Compare"><i
+                                                            class="ion-ios-loop"></i></a>
+                                                <a href="#" data-toggle="tooltip" data-placement="left" title="Wishlist"><i
+                                                            class="ion-ios-shuffle"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-description text-center">
+                                        <div class="manufacturer">
+                                            <p><a href="product-details.html">Fashion Manufacturer</a></p>
+                                        </div>
+                                        <div class="product-name">
+                                            <h3><a href="product-details.html">Joust Duffle Bags</a></h3>
+                                        </div>
+                                        <div class="price-box">
+                                            <span class="regular-price">$100.00</span>
+                                            <span class="old-price"><del></del></span>
+                                        </div>
+                                        <div class="product-btn">
+                                            <a href="#"><i class="ion-bag"></i>Add to cart</a>
+                                        </div>
+                                        <div class="hover-box text-center">
+                                            <div class="ratings">
+                                                <span><i class="fa fa-star"></i></span>
+                                                <span><i class="fa fa-star"></i></span>
+                                                <span><i class="fa fa-star"></i></span>
+                                                <span><i class="fa fa-star"></i></span>
+                                                <span><i class="fa fa-star"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="product-item mb-20">
+                                    <div class="product-thumb">
+                                        <a href="product-details.html">
+                                            <img src="assets/img/product/product-4.jpg" alt="product image">
+                                        </a>
+                                        <div class="box-label">
+                                            <div class="product-label discount">
+                                                <span>-5%</span>
+                                            </div>
+                                        </div>
+                                        <div class="product-action-link">
+                                            <div class="product-action-link">
+                                                <a href="#" data-toggle="modal" data-target="#quick_view"> <span
+                                                            data-toggle="tooltip" data-placement="left" title="Quick view"><i class="ion-ios-eye-outline"></i></span> </a>
+                                                <a href="#" data-toggle="tooltip" data-placement="left" title="Compare"><i
+                                                            class="ion-ios-loop"></i></a>
+                                                <a href="#" data-toggle="tooltip" data-placement="left" title="Wishlist"><i
+                                                            class="ion-ios-shuffle"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-description text-center">
+                                        <div class="manufacturer">
+                                            <p><a href="product-details.html">Fashion Manufacturer</a></p>
+                                        </div>
+                                        <div class="product-name">
+                                            <h3><a href="product-details.html">Chaz Kangeroo Hoodies</a></h3>
+                                        </div>
+                                        <div class="price-box">
+                                            <span class="regular-price">$90.00</span>
+                                            <span class="old-price"><del>$140.00</del></span>
+                                        </div>
+                                        <div class="product-btn">
+                                            <a href="#"><i class="ion-bag"></i>Add to cart</a>
+                                        </div>
+                                        <div class="hover-box text-center">
+                                            <div class="ratings">
+                                                <span><i class="fa fa-star"></i></span>
+                                                <span><i class="fa fa-star"></i></span>
+                                                <span><i class="fa fa-star"></i></span>
+                                                <span><i class="fa fa-star"></i></span>
+                                                <span><i class="fa fa-star"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="product-item mb-20">
+                                    <div class="product-thumb">
+                                        <a href="product-details.html">
+                                            <img src="assets/img/product/product-5.jpg" alt="product image">
+                                        </a>
+                                        <div class="box-label">
+                                            <div class="product-label new">
+                                                <span>new</span>
+                                            </div>
+                                        </div>
+                                        <div class="product-action-link">
+                                            <div class="product-action-link">
+                                                <a href="#" data-toggle="modal" data-target="#quick_view"> <span
+                                                            data-toggle="tooltip" data-placement="left" title="Quick view"><i class="ion-ios-eye-outline"></i></span> </a>
+                                                <a href="#" data-toggle="tooltip" data-placement="left" title="Compare"><i
+                                                            class="ion-ios-loop"></i></a>
+                                                <a href="#" data-toggle="tooltip" data-placement="left" title="Wishlist"><i
+                                                            class="ion-ios-shuffle"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-description text-center">
+                                        <div class="manufacturer">
+                                            <p><a href="product-details.html">Fashion Manufacturer</a></p>
+                                        </div>
+                                        <div class="product-name">
+                                            <h3><a href="product-details.html">Compete Track Totes</a></h3>
+                                        </div>
+                                        <div class="price-box">
+                                            <span class="regular-price">$100.00</span>
+                                            <span class="old-price"><del></del></span>
+                                        </div>
+                                        <div class="product-btn">
+                                            <a href="#"><i class="ion-bag"></i>Add to cart</a>
+                                        </div>
+                                        <div class="hover-box text-center">
+                                            <div class="ratings">
+                                                <span><i class="fa fa-star"></i></span>
+                                                <span><i class="fa fa-star"></i></span>
+                                                <span><i class="fa fa-star"></i></span>
+                                                <span><i class="fa fa-star"></i></span>
+                                                <span><i class="fa fa-star"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="product-item mb-20">
+                                    <div class="product-thumb">
+                                        <a href="product-details.html">
+                                            <img src="assets/img/product/product-6.jpg" alt="product image">
+                                        </a>
+                                        <div class="box-label">
+                                            <div class="product-label new">
+                                                <span>new</span>
+                                            </div>
+                                            <div class="product-label discount">
+                                                <span>-15%</span>
+                                            </div>
+                                        </div>
+                                        <div class="product-action-link">
+                                            <div class="product-action-link">
+                                                <a href="#" data-toggle="modal" data-target="#quick_view"> <span
+                                                            data-toggle="tooltip" data-placement="left" title="Quick view"><i class="ion-ios-eye-outline"></i></span> </a>
+                                                <a href="#" data-toggle="tooltip" data-placement="left" title="Compare"><i
+                                                            class="ion-ios-loop"></i></a>
+                                                <a href="#" data-toggle="tooltip" data-placement="left" title="Wishlist"><i
+                                                            class="ion-ios-shuffle"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-description text-center">
+                                        <div class="manufacturer">
+                                            <p><a href="product-details.html">Fashion Manufacturer</a></p>
+                                        </div>
+                                        <div class="product-name">
+                                            <h3><a href="product-details.html">Driven Backpacks</a></h3>
+                                        </div>
+                                        <div class="price-box">
+                                            <span class="regular-price">$90.00</span>
+                                            <span class="old-price"><del>$70.00</del></span>
+                                        </div>
+                                        <div class="product-btn">
+                                            <a href="#"><i class="ion-bag"></i>Add to cart</a>
+                                        </div>
+                                        <div class="hover-box text-center">
+                                            <div class="ratings">
+                                                <span><i class="fa fa-star"></i></span>
+                                                <span><i class="fa fa-star"></i></span>
+                                                <span><i class="fa fa-star"></i></span>
+                                                <span><i class="fa fa-star"></i></span>
+                                                <span><i class="fa fa-star"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- featured product area end -->
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="sidebar-wrapper pt-md-16 pb-md-86 pb-sm-44">
+                            <!-- single sidebar start -->
+                            <div class="sidebar-single">
+                                <div class="sidebar-single">
+                                    <div class="sidebar-title">
+                                        <h3>КАТЕГОРИИ</h3>
+                                    </div>
+                                    <div class="sidebar-body">
+                                        <ul class="sidebar-category">
+                                            {% for category in categorys %}
+                                                <li class="has-children"><a href="#">{{ category.name }}</a>
+                                                    <ul class="children" style="display: none;">
+                                                        {% for product in category.product  %}
+                                                            <li>
+                                                                <a href="{{ path('product_inner',{'id' : product.id}) }}">{{ product.name }}</a>
+                                                            </li>
+
+                                                        {% endfor %}
+                                                    </ul>
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- single sidebar end -->
+
+
+                            <!-- single sidebar start -->
+                            <div class="sidebar-single">
+                                <div class="sidebar-title">
+                                    <h3>ПРОДУКТЫ</h3>
+                                </div>
+                                <div class="sidebar-body">
+                                    <div class="popular-item-inner">
+
+                                        {% for proRend in productsRend %}
+                                            <div class="popular-item">
+                                                <div class="pop-item-thumb">
+                                                    <a href="{{ path('product_inner',{'id' : proRend.id}) }}">
+                                                        <img src="{% path proRend.image,'reference' %}" alt="">
+                                                    </a>
+                                                </div>
+                                                <div class="pop-item-des">
+                                                    <h4><a href="{{ path('product_inner',{'id' : proRend.id}) }}">{{ proRend.name }}</a></h4>
+
+                                                    {% if proRend.rebate != null  %}
+                                                        <span class="pop-price">{{ proRend.rebate }}</span>
+                                                    {% else %}
+                                                        <span class="pop-price">{{ proRend.price }}</span>
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- single sidebar end -->
+
+                            <!-- single sidebar start -->
+                            <div class="sidebar-single">
+                                <div class="advertising-thumb img-full fix">
+                                    <a href="#">
+                                        <img src="assets/img/banner/advertising.jpg" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- single sidebar end -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- page main wrapper end -->
+
+
+{% endblock %}
