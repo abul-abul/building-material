@@ -25,7 +25,7 @@ class MainController extends BaseController
 
         $query = 'SELECT id FROM  product
                 ORDER BY RAND()
-                LIMIT 5';
+                LIMIT 10';
 
 
 

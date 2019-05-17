@@ -4,23 +4,27 @@
 
 {% block main %}
     <!-- slider area start -->
+
     <div class="hero-area">
         <div class="hero-slider-active slider-arrow-style slick-dot-style hero-dot">
-
             {% for homeSilder in homeSilders %}
-            <div class="hero-single-slide hero-2 hero-2__Style-5 d-flex align-items-center" style="background-image: url({% path homeSilder.image,'reference' %});">
-                <div class="container">
-                    <div class="slider-content text-center">
-                        <h1>{{ homeSilder.name }}</h1>
-                        <h3 class="text-white">{{ homeSilder.description }}</h3>
-                        {#<a href="shop-grid-left-sidebar.html" class="slider-btn">view collection</a>#}
+                <div class="hero-single-slide hero-1 d-flex align-items-center" style="background-image: url({% path homeSilder.image,'reference' %});">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <div class="slider-content">
+                                    <h1>{{ homeSilder.name }}</h1>
+                                    <h3>{{ homeSilder.description }}</h3>
+
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
             {% endfor %}
         </div>
     </div>
-    <!-- slider area end -->
+
 
 
 
@@ -31,40 +35,47 @@
                 <div class="col-12">
                     <div class="section-title text-center pb-44">
                         <p>Последние популярные продукты</p>
-                        <h2 class="text-white">Продукты</h2>
+                        <h2>Продукты</h2>
                     </div>
                 </div>
             </div>
-            <div class="row product-carousel-one spt-2 slick-arrow-style">
+            <div class="row product-carousel-one spt slick-arrow-style" data-row="2">
 
                 {% for rendProduct in rendProducts %}
                     <div class="col">
-                        <div class="product-item item-black mb-20">
+                        <div class="product-item mb-20">
                             <div class="product-thumb">
                                 <a href="product-details.html">
                                     <img src="{% path rendProduct.image,'reference' %}" alt="product image">
                                 </a>
-                                <div class="box-label">
+                                {#<div class="box-label">#}
                                     {#<div class="product-label new">#}
                                         {#<span>new</span>#}
                                     {#</div>#}
-                                    {% if rendProduct.rebate != null  %}
-                                        <div class="product-label discount">
-                                            <span>-5%</span>
-                                        </div>
-                                    {% endif %}
-                                </div>
+                                    {#<div class="product-label discount">#}
+                                        {#<span>-5%</span>#}
+                                    {#</div>#}
+                                {#</div>#}
                                 <div class="product-action-link">
-                                    <a href="#" data-toggle="modal" data-target="#quick_view"> <span
-                                                data-toggle="tooltip" data-placement="left" title="Quick view"><i class="ion-ios-eye-outline"></i></span> </a>
+                                    <a href="#" data-toggle="modal" data-target="#quick_view">
+                                        <span data-toggle="tooltip" data-placement="left" title="Quick view">
+                                                <i class="ion-ios-eye-outline"></i>
+                                        </span>
+                                    </a>
 
                                 </div>
                             </div>
                             <div class="product-description text-center">
-
-                                <div class="product-name">
-                                    <h3><a href="product-details.html">{{ rendProduct.name }}</a></h3>
+                                <div class="manufacturer">
+                                    <p>
+                                        <a href="product-details.html">
+                                            {{ rendProduct.name }}
+                                        </a>
+                                    </p>
                                 </div>
+                                {#<div class="product-name">#}
+                                    {#<h3><a href="product-details.html">Endeavor Daytrip</a></h3>#}
+                                {#</div>#}
                                 <div class="price-box">
                                     {% if rendProduct.rebate != null  %}
                                         <span class="regular-price"> {{ rendProduct.rebate }}</span>
@@ -86,15 +97,15 @@
                                         </span>
                                     {% endif %}
                                 </div>
-                                <div class="hover-box text-center">
-                                    <div class="product-btn">
-                                        <a data-id="{{ rendProduct.id }}" href="#"><i class="ion-bag"></i>Добавить корзину</a>
-                                    </div>
-
+                                <div class="product-btn">
+                                    <a href="#"><i class="ion-bag"></i>Добавить корзину</a>
                                 </div>
+
                             </div>
                         </div>
                     </div>
+
+
                 {% endfor %}
             </div>
         </div>
@@ -125,7 +136,7 @@
                 <div class="col-12">
                     <div class="section-title text-center pb-44">
 
-                        <h2 class="text-white">категории</h2>
+                        <h2>категории</h2>
                     </div>
                 </div>
             </div>

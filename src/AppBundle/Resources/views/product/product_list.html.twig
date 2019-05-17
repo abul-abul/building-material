@@ -1,11 +1,13 @@
 {% extends 'AppBundle::layout.html.twig' %}
 {% block stylesheets %}
     {{  parent() }}
-    {#<link rel="stylesheet" href="/bundles/main/css/dataTables.bootstrap.min.css">#}
+    <link href='{{ asset('bundles/app/css/template/style.css') }}' rel='stylesheet' type='text/css'>
 {% endblock %}
 
 {% block main %}
 
+
+    <!-- breadcrumb area start -->
     <div class="breadcrumb-area">
         <div class="container">
             <div class="row">

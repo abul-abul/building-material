@@ -6,6 +6,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\HttpFoundation\Cookie;
+use Symfony\Component\HttpFoundation\Response;
+
 
 class ProductController extends BaseController
 {
@@ -54,6 +57,10 @@ class ProductController extends BaseController
      */
     public function productInnerAction($id,Request $request)
     {
+//        $response = new Response();
+//        $response->headers->clearCookie('myCookie');
+//        $response->send();
+//dump($request->cookies);die;
         $em = $this->getDoctrine()->getManager();
         $product =$em->getRepository("AppBundle:Product")->find($id);
         $categorys =$em->getRepository("AppBundle:Category")->findAll();
@@ -61,6 +68,7 @@ class ProductController extends BaseController
                 ORDER BY RAND()
                 LIMIT 4';
 
+        $productCat = $em->getRepository("AppBundle:Product")->findBy(array('category' => $id));
 
 
         $statement = $em->getConnection()->prepare($query);
@@ -73,8 +81,10 @@ class ProductController extends BaseController
             $productRand =$em->getRepository("AppBundle:Product")->find($rendid['id']);
             array_push($productsRend,$productRand);
         }
+
        return [
            'product'=>$product,
+           'productCats'=>$productCat,
            'productsRend' => $productsRend,
            'categorys'=>$categorys
        ];
