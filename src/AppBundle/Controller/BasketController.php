@@ -14,27 +14,78 @@ use Symfony\Component\HttpFoundation\Session\Session;
 class BasketController extends BaseController
 {
     /**
-     * @Route("/add-basket", name="user_reg")
+     * @Route("/add-basket", name="add_basket")
      */
     public function addBasketAction(Request $request)
     {
-        $em = $this->getDoctrine()->getManager();
-//        $coocAll = $request->cookies->get('productId');
+        $arrCook = [];
 
+        $cookies = $request->cookies;
+        if ($cookies->has('productId'))
+        {
+            array_push($arrCook,$cookies->get('productId'));
+
+        }
 
         $result = $request->request->all();
         $id = $result['id'];
-        $product =$em->getRepository("AppBundle:Product")->find($id);
-     //   $session->set('product', $product);
 
-
-
+//        dump( array_search($id, explode(',',$cookies->get('productId'))));
 //
-       // $cookie = new Cookie('productId', $product->getId());
-        $cookie = new Cookie('productId', $product->getId(), strtotime('now + 60 minutes'));
+//die;
+        if ((array_search($id, explode(',',$cookies->get('productId')))) == false) {
+            array_push($arrCook,$id);
+
+
+            $arrString = implode(",",$arrCook);
+
+            $cookie = new Cookie('productId',$arrString, strtotime('now + 60 minutes'));
 
 
 
+            $response = new Response();
+            $response->headers->setCookie($cookie);
+            $response->headers->getCookies();
+            $response->send();
+
+
+        }else{
+            $response = ' ';
+
+        }
+
+
+
+
+
+
+
+        return new Response($response);
+
+
+    }
+
+    /**
+     * @Route("/delete-basket", name="user_reg")
+     */
+    public function deleteBasketAction(Request $request)
+    {
+        $result = $request->request->all();
+        $id = $result['id'];
+        $arrCook = [];
+        $cookies = $request->cookies;
+        if ($cookies->has('productId'))
+        {
+            array_push($arrCook,$cookies->get('productId'));
+
+        }
+        $arrString = implode(",",$arrCook);
+        $exp = explode(',',$arrString);
+        if (($key = array_search($id, $exp)) !== false) {
+            unset($exp[$key]);
+        }
+        $arrString = implode(",",$exp);
+        $cookie = new Cookie('productId',$arrString, strtotime('now + 60 minutes'));
         $response = new Response();
         $response->headers->setCookie($cookie);
         $response->headers->getCookies();
@@ -42,18 +93,6 @@ class BasketController extends BaseController
 
 
         return new Response($response);
-
-
-  //  die;
-
-
-      //  $rebateProducts = $productRepo->rebateProduct();
-        return [
-
-
-        ];
-
     }
-
 
 }

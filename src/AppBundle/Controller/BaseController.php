@@ -46,4 +46,49 @@ class BaseController extends Controller
 
     }
 
+
+    public function basketProductAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $cookies = $request->cookies;
+        $productCook = $cookies->get('productId');
+        $arrIds = explode(',',$productCook);
+        $objProducts = [];
+        foreach ($arrIds as $arrId){
+           $product =$em->getRepository("AppBundle:Product")->find($arrId);
+           array_push($objProducts,$product);
+        }
+
+
+        return $this->render('AppBundle:base:basketProduct.html.twig',
+            array(
+                'countProductBasket'=>count($objProducts),
+                'products'=>$objProducts
+            )
+        );
+    }
+
+    public function basketProductCountAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $cookies = $request->cookies;
+        $productCook = $cookies->get('productId');
+        $arrIds = explode(',',$productCook);
+        $objProducts = [];
+        foreach ($arrIds as $arrId){
+            $product =$em->getRepository("AppBundle:Product")->find($arrId);
+            array_push($objProducts,$product);
+        }
+
+
+        return $this->render('AppBundle:base:basketProductCount.html.twig',
+            array(
+                'countProductBasket'=>count($objProducts)
+
+            )
+        );
+    }
+
 }

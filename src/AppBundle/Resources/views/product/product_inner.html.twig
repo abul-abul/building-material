@@ -40,14 +40,14 @@
 
                                         {% for i,galleryHasMedia in product.gallery.galleryHasMedias %}
                                             <div class="pro-large-img img-zoom" id="img1">
-                                                <img src="{% path galleryHasMedia.media, 'reference' %}" alt="" />
+                                                <img src="{% path galleryHasMedia.media, 'big' %}" alt="" />
                                             </div>
                                         {% endfor %}
                                     </div>
                                     <div class="pro-nav slick-padding2 slider-arrow-style slider-arrow-style__style-2">
                                         {% for i,galleryHasMedia in product.gallery.galleryHasMedias %}
                                             <div class="pro-nav-thumb">
-                                                <img src="{% path galleryHasMedia.media, 'reference' %}" alt="" />
+                                                <img width="100" height="70" src="{% path galleryHasMedia.media, 'small' %}" alt="" />
                                             </div>
                                         {% endfor %}
                                     </div>
@@ -248,7 +248,7 @@
                                             <div class="popular-item">
                                                 <div class="pop-item-thumb">
                                                     <a href="{{ path('product_inner',{'id' : proRend.id}) }}">
-                                                        <img src="{% path proRend.image,'reference' %}" alt="">
+                                                        <img src="{% path proRend.image,'list' %}" alt="">
                                                     </a>
                                                 </div>
                                                 <div class="pop-item-des">
@@ -285,5 +285,13 @@
     </main>
     <!-- page main wrapper end -->
 
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+//      console.log(  getCookie('productId'))
+    </script>
 
 {% endblock %}

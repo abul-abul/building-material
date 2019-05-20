@@ -18,11 +18,26 @@ $(document).ready(function () {
             url: prefix+'/add-basket',
             data: {id:id},
             success:function (data) {
-
+               if(data != ' '){
+                   location.reload()
+               }
+           //
             }
         })
+    });
+
+    $('.delete_baslet').click(function () {
+        var id = $(this).attr('data-id')
+        var row = $(this).parent();
+        $.ajax({
+            type: 'POST',
+            url: prefix+'/delete-basket',
+            data: {id:id},
+            success:function (data) {
+                row.hide();
+            }
+        })
+
     })
 
-
-
-})
+});

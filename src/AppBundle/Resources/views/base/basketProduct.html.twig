@@ -1,0 +1,32 @@
+
+{% if products is defined and products[0] is not null%}
+
+    {% for product in products %}
+        <li>
+            <div class="cart-img">
+                <a href="{{ path('product_inner',{'id' : product.id}) }}">
+                    <img src="{% path product.image,'list' %}" alt="{{ product.name }}">
+
+                </a>
+            </div>
+            <div class="cart-info">
+                <h4><a href="{{ path('product_inner',{'id' : product.id}) }}">{{ product.name }}</a></h4>
+                {% if product.rebate != null  %}
+                    <span>{{ product.rebate }}</span>
+                {% else %}
+                    <span>{{ product.price }}</span>
+                {% endif %}
+
+            </div>
+            <div class="del-icon delete_baslet" data-id={{ product.id }}>
+                <i class="fa fa-times"></i>
+            </div>
+        </li>
+
+    {% endfor %}
+    <li class="mini-cart-price">
+        <span class="subtotal">subtotal : </span>
+        <span class="subtotal-price ml-auto">$110.00</span>
+    </li>
+
+{% endif %}
