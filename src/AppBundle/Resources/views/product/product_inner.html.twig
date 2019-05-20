@@ -90,50 +90,50 @@
                                         <ul class="nav review-tab">
 
                                             <li>
-                                                <a class="active" data-toggle="tab" href="#tab_three">reviews</a>
+                                                <a class="active" data-toggle="tab" href="#tab_three">Заказать товар</a>
                                             </li>
                                         </ul>
                                         <div class="tab-content reviews-tab">
 
 
                                             <div class="tab-pane fade show active" id="tab_three">
-                                                <form action="#" class="review-form">
+                                                <form action="{{ path('order_product') }}" class="review-form" method="post">
 
 
                                                     <div class="form-group row">
                                                         <div class="col">
-                                                            <label class="col-form-label"><span class="text-danger">*</span> firstname</label>
+                                                            <label class="col-form-label"><span class="text-danger">*</span> Имя</label>
                                                             <input name="firstname" type="text" class="form-control" required>
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
                                                         <div class="col">
-                                                            <label class="col-form-label"><span class="text-danger">*</span> lastname</label>
-                                                            <input name="lastname" type="email" class="form-control" required>
+                                                            <label class="col-form-label"><span class="text-danger">*</span> Фамилия</label>
+                                                            <input name="lastname" type="text" class="form-control" required>
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
                                                         <div class="col">
-                                                            <label class="col-form-label"><span class="text-danger">*</span> email</label>
+                                                            <label class="col-form-label"><span class="text-danger">*</span> Электронная почта</label>
                                                             <input  name="email" type="email" class="form-control" required>
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
                                                         <div class="col">
-                                                            <label class="col-form-label"><span class="text-danger">*</span> address</label>
-                                                            <input  name="address" type="email" class="form-control" required>
+                                                            <label class="col-form-label"><span class="text-danger">*</span> Адрес</label>
+                                                            <input  name="address" type="text" class="form-control" required>
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
                                                         <div class="col">
-                                                            <label class="col-form-label"><span class="text-danger">*</span> phone</label>
+                                                            <label class="col-form-label"><span class="text-danger">*</span> Телефон</label>
                                                             <input  name="phone" type="text" class="form-control" required>
                                                         </div>
                                                     </div>
                                                     <input name="product_id" type="hidden" value="{{ product.id }}">
 
                                                     <div class="buttons">
-                                                        <button class="sqr-btn" type="submit">Continue</button>
+                                                        <button class="sqr-btn" type="submit">Заказать</button>
                                                     </div>
                                                 </form> <!-- end of review-form -->
                                             </div>
@@ -155,24 +155,24 @@
                                    {#{{ dump(category.product.image) }}#}
                                     <div class="product-item mb-20">
                                         <div class="product-thumb">
-                                            <a href="product-details.html">
+                                            <a href="{{ path('product_inner',{'id' : productCat.id}) }}">
                                                 <img src="{% path productCat.image,'reference' %}" alt="product image">
                                             </a>
 
                                             <div class="product-action-link">
                                                 <a href="#" data-toggle="modal" data-target="#quick_view"> <span
-                                                            data-toggle="tooltip" data-placement="left" title="Quick view"><i class="ion-ios-eye-outline"></i></span> </a>
-                                                {#<a href="#" data-toggle="tooltip" data-placement="left" title="Compare"><i#}
-                                                            class="ion-ios-loop"></i></a>
-                                                {#<a href="#" data-toggle="tooltip" data-placement="left" title="Wishlist"><i#}
-                                                            class="ion-ios-shuffle"></i></a>
+                                                            data-toggle="tooltip" data-placement="left" title=""><i class="ion-ios-eye-outline"></i></span> </a>
+
                                             </div>
                                         </div>
                                         <div class="product-description text-center">
                                             <div class="manufacturer">
-                                                <p><a href="product-details.html"> {{ productCat.name }}</a></p>                                            </div>
+                                                <p>
+                                                    <a href="{{ path('product_inner',{'id' : productCat.id}) }}"> {{ productCat.name }}</a>
+                                                </p>
+                                            </div>
                                             <div class="product-name">
-                                                <h3><a href="product-details.html">Endeavor Daytrip</a></h3>
+
                                             </div>
                                             <div class="price-box">
                                                 {% if productCat.rebate != null  %}
@@ -196,7 +196,7 @@
                                                 {% endif %}
                                             </div>
                                             <div class="product-btn">
-                                                <a href="#"><i class="ion-bag"></i>Добавить корзину</a>
+                                                <a data-id="{{ product.id }}" class="add_basket" href="#"><i class="ion-bag"></i>Добавить корзину</a>
                                             </div>
 
                                         </div>

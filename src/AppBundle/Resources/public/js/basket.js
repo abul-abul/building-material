@@ -29,12 +29,19 @@ $(document).ready(function () {
     $('.delete_baslet').click(function () {
         var id = $(this).attr('data-id')
         var row = $(this).parent();
+        var cout = parseInt($('.cart-notification').text());
+        if(cout > 0){
+            var countMinus = cout-1;
+        }
+
+        console.log(cout)
         $.ajax({
             type: 'POST',
             url: prefix+'/delete-basket',
             data: {id:id},
             success:function (data) {
                 row.hide();
+                $('.cart-notification').text(countMinus);
             }
         })
 

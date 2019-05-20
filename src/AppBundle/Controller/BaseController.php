@@ -77,14 +77,17 @@ class BaseController extends Controller
         $productCook = $cookies->get('productId');
         $arrIds = explode(',',$productCook);
         $objProducts = [];
+        $priceTotal = 0;
         foreach ($arrIds as $arrId){
             $product =$em->getRepository("AppBundle:Product")->find($arrId);
+//            $priceTotal += (int)$product->getPrice();
             array_push($objProducts,$product);
         }
-
-
+//dump($priceTotal);
+//die;
         return $this->render('AppBundle:base:basketProductCount.html.twig',
             array(
+                'priceTotal' =>$priceTotal,
                 'countProductBasket'=>count($objProducts)
 
             )

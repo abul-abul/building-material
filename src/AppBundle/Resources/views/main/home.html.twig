@@ -45,22 +45,15 @@
                     <div class="col">
                         <div class="product-item mb-20">
                             <div class="product-thumb">
-                                <a href="product-details.html">
+                                <a href="{{ path('product_inner',{'id' : rendProduct.id}) }}">
                                    
 
-                                    <img width="256" height="256"  src="{% path rendProduct.image,'list' %}" alt="product image">
+                                    <img style="height:412px " src="{% path rendProduct.image,'list' %}" alt="product image">
                                 </a>
-                                {#<div class="box-label">#}
-                                    {#<div class="product-label new">#}
-                                        {#<span>new</span>#}
-                                    {#</div>#}
-                                    {#<div class="product-label discount">#}
-                                        {#<span>-5%</span>#}
-                                    {#</div>#}
-                                {#</div>#}
+
                                 <div class="product-action-link">
                                     <a href="#" data-toggle="modal" data-target="#quick_view">
-                                        <span data-toggle="tooltip" data-placement="left" title="Quick view">
+                                        <span data-toggle="tooltip" data-placement="left" title="">
                                                 <i class="ion-ios-eye-outline"></i>
                                         </span>
                                     </a>
@@ -69,8 +62,8 @@
                             </div>
                             <div class="product-description text-center">
                                 <div class="manufacturer">
-                                    <p>
-                                        <a href="product-details.html">
+                                    <p class="rend_product_name">
+                                        <a href="{{ path('product_inner',{'id' : rendProduct.id}) }}">
                                             {{ rendProduct.name }}
                                         </a>
                                     </p>
@@ -100,7 +93,7 @@
                                     {% endif %}
                                 </div>
                                 <div class="product-btn">
-                                    <a href="#"><i class="ion-bag"></i>Добавить корзину</a>
+                                    <a data-id="{{ rendProduct.id }}" class="add_basket" href="#"><i class="ion-bag"></i>Добавить корзину</a>
                                 </div>
 
                             </div>

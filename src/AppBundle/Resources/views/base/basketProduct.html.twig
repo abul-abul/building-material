@@ -10,7 +10,8 @@
                 </a>
             </div>
             <div class="cart-info">
-                <h4><a href="{{ path('product_inner',{'id' : product.id}) }}">{{ product.name }}</a></h4>
+
+                <h4><a href="{{ path('product_inner',{'id' : product.id}) }}">{{ product.name|truncate(60) }}</a></h4>
                 {% if product.rebate != null  %}
                     <span>{{ product.rebate }}</span>
                 {% else %}
@@ -24,9 +25,9 @@
         </li>
 
     {% endfor %}
-    <li class="mini-cart-price">
-        <span class="subtotal">subtotal : </span>
-        <span class="subtotal-price ml-auto">$110.00</span>
-    </li>
+    {#<li class="mini-cart-price">#}
+        {#<span class="subtotal">subtotal : </span>#}
+        {#<span class="subtotal-price ml-auto">{{ priceTotal }}</span>#}
+    {#</li>#}
 
 {% endif %}
