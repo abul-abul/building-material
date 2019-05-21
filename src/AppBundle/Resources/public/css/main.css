@@ -26,3 +26,30 @@ i.fa{
     background-color: #FFBABA;
     background-image: url('https://i.imgur.com/GnyDvKN.png');
 }
+
+.pagination{
+    padding: 20px 0 18px;
+
+}
+.page{
+    display: inline-block;
+}
+.page a {
+    color: #606060;
+    padding: 10px;
+}
+.current{
+    color: #ff7e67;
+}
+.last a{
+    color: #606060;
+}
+.first a{
+    color: #606060;
+}
+.next{
+    display: none;
+}
+.previous{
+    display: none;
+}

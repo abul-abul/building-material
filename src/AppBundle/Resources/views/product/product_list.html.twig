@@ -1,4 +1,5 @@
 {% extends 'AppBundle::layout.html.twig' %}
+{% block title %} {{ category.name }} {% endblock %}
 {% block stylesheets %}
     {{  parent() }}
     <link href='{{ asset('bundles/app/css/template/style.css') }}' rel='stylesheet' type='text/css'>
@@ -231,13 +232,17 @@
                         </div>
                         <!-- start pagination area -->
                         <div class="paginatoin-area text-center mt-18">
+
+
                             <ul class="pagination-box">
-                                <li><a class="Previous" href="#">Previous</a></li>
-                                <li class="active"><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a class="Next" href="#"> Next </a></li>
+                                {{ knp_pagination_render(products) }}
+                                {#<li><a class="Previous" href="#">Previous</a></li>#}
+                                {#<li class="active"><a href="#">1</a></li>#}
+                                {#<li><a href="#">2</a></li>#}
+                                {#<li><a href="#">3</a></li>#}
+                                {#<li><a class="Next" href="#"> Next </a></li>#}
                             </ul>
+
                         </div>
                         <!-- end pagination area -->
                     </div>

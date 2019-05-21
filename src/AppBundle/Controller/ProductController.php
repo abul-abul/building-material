@@ -42,10 +42,17 @@ class ProductController extends BaseController
             array_push($productsRend,$productRand);
         }
 
+
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $product, /* query NOT result */
+            $request->query->getInt('page', 1), /*page number*/
+            10 /*limit per page*/
+        );
         return [
             'category'=>$category,
             'categorys'=>$categorys,
-            'products' => $product,
+            'products' => $pagination,
             'productsRend' => $productsRend
         ];
 

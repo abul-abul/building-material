@@ -45,15 +45,16 @@
                     <div class="main-header-inner">
                         <div class="main-menu">
                             <nav id="mobile-menu">
+                                {% set route = app.request.attributes.get('_route') %}
                                 <ul>
-                                    <li class="active">
+                                    <li {% if route == 'home' %}class="active"{% endif %}>
                                         <a href="{{ path('home') }}">
                                             ГЛАВНАЯ СТРАНИЦА
                                         </a>
 
                                     </li>
 
-                                    <li >
+                                    <li {% if route == 'about' %}class="active"{% endif %}>
                                         <a href="{{ path('about') }}">
                                             О нас
                                         </a>
