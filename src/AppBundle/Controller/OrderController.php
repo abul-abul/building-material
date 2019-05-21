@@ -27,45 +27,67 @@ class OrderController extends BaseController
 
         if($request->isMethod('post')){
             $result = $request->request->all();
+
             $buyObj = new Buy;
 
             if($result['firstname']){
                 $buyObj->setFirstname($result['firstname']);
             }else{
-
+                $this->get('session')->getFlashBag()->add('error', 'напишите имя ');
+                return $this->redirectToRoute('product_inner', array('id' => $result['product_id']));
             }
 
             if($result['lastname']){
                 $buyObj->setLastname($result['lastname']);
             }else{
-
+                $this->get('session')->getFlashBag()->add('error', 'напишите фамилия  ');
+                return $this->redirectToRoute('product_inner', array('id' => $result['product_id']));
             }
 
             if($result['email']){
-                $buyObj->setEmail($result['lastname']);
-            }else{
+                if(filter_var($result['email'], FILTER_VALIDATE_EMAIL)) {
+                    $buyObj->setEmail($result['email']);
+                }else{
+                    $this->get('session')->getFlashBag()->add('error', 'написать правильное  электроны почта');
+                    return $this->redirectToRoute('product_inner', array('id' => $result['product_id']));
 
+                }
+
+
+            }else{
+                $this->get('session')->getFlashBag()->add('error', 'напишите электроны почта');
+                return $this->redirectToRoute('product_inner', array('id' => $result['product_id']));
             }
 
             if($result['address']){
-                $buyObj->setAddress($result['lastname']);
+                $buyObj->setAddress($result['address']);
             }else{
-
+                $this->get('session')->getFlashBag()->add('error', 'напишите аддрес ');
+                return $this->redirectToRoute('product_inner', array('id' => $result['product_id']));
             }
 
 
             if($result['phone']){
-                $buyObj->setPhone($result['lastname']);
+                $buyObj->setPhone($result['phone']);
             }else{
-
+                $this->get('session')->getFlashBag()->add('error', 'напишите телефон  ');
+                return $this->redirectToRoute('product_inner', array('id' => $result['product_id']));
             }
+            if($result['product_count'] > 0){
+                $buyObj->setProductCount($result['product_count']);
+            }else{
+                $this->get('session')->getFlashBag()->add('error', '');
+                return $this->redirectToRoute('product_inner', array('id' => $result['product_id']));
+            }
+
             $product =$em->getRepository("AppBundle:Product")->find($result['product_id']);
             $buyObj->setProduct($product);
-dump($buyObj);
+
             $em->persist($buyObj);
             $em->flush();
 
-            die;
+            $this->get('session')->getFlashBag()->add('success', 'Спасибо за ваш заказ мы свяжемся с вами ');
+            return $this->redirectToRoute('product_inner', array('id' => $result['product_id']));
 
 
         }

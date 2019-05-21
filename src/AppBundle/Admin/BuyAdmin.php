@@ -106,7 +106,14 @@ class BuyAdmin extends Admin
             ->add('phone', null, array(
                 'label' => 'Телефон',
             ))
-            ->add('product')
+
+            ->add('product', null, array(
+                'label' => 'товар',
+            ))
+            ->add('product_count', null, array(
+                'label' => 'количество товара',
+            ))
+
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),

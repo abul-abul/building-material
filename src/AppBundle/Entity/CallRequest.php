@@ -30,11 +30,15 @@ class CallRequest
 
     /**
      * @var
-     * @ORM\Column(name="phone", type="integer", nullable=false)
+     * @ORM\Column(name="phone", type="string", nullable=false)
      */
     protected $phone;
 
 
+    public function __toString()
+    {
+        return (string) $this->getName();
+    }
 
     /**
      * Get id.

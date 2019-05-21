@@ -47,9 +47,15 @@ class Buy
 
     /**
      * @var
-     * @ORM\Column(name="phone", type="integer", nullable=false)
+     * @ORM\Column(name="phone", type="text", nullable=false)
      */
     protected $phone;
+
+    /**
+     * @var
+     * @ORM\Column(name="product_count", type="text", nullable=false)
+     */
+    protected $product_count;
 
     /**
      *
@@ -210,5 +216,29 @@ class Buy
     public function getProduct()
     {
         return $this->product;
+    }
+
+    /**
+     * Set productCount.
+     *
+     * @param string $productCount
+     *
+     * @return Buy
+     */
+    public function setProductCount($productCount)
+    {
+        $this->product_count = $productCount;
+
+        return $this;
+    }
+
+    /**
+     * Get productCount.
+     *
+     * @return string
+     */
+    public function getProductCount()
+    {
+        return $this->product_count;
     }
 }

@@ -62,6 +62,9 @@ class CallRequestAdmin extends Admin
     {
         $listMapper
             ->add('id')
+            ->add('name', null, array(
+                'label' => 'Имя',
+            ))
             ->add('phone', null, array(
                 'label' => 'Телефон',
             ))

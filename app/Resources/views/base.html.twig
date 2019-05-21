@@ -62,6 +62,12 @@
                                         </ul>
                                     </li>
 
+                                    <li>
+                                        <a href="#"  data-toggle="modal" data-target="#phone_request">
+                                            Заказать звонок
+                                        </a>
+
+                                    </li>
 
                                 </ul>
                             </nav>
@@ -194,6 +200,49 @@
 
 </footer>
 
+<div class="modal" id="phone_request">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <!-- product details inner end -->
+                <div class="product-details-inner">
+                    <div class="row">
+                        {#<div class="col-lg-5 col-md-5">#}
+                            {##}
+                            {##}
+                        {#</div>#}
+                        <div class="col-lg-12 col-md-12">
+                            <div class="product-details-des pt-sm-30">
+                               <center><h3>ЗАКАЗАТЬ ЗВОНОК</h3></center>
+                                <div class="form-group ">
+                                    <div class="col">
+                                        <label class="col-form-label"><span class="text-danger">*</span> Ваше имя</label>
+                                        <input name="firstname" type="text" class="form-control call_name">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col">
+                                        <label class="col-form-label"><span class="text-danger">*</span> Телефон</label>
+                                        <input name="lastname" type="text" class="form-control call_phone">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="product-btn product-btn__color request_call">
+                                        <a href="#"><i class="ion-bag"></i>Заказать звонок</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- product details inner end -->
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- Quick view modal start -->
 <div class="modal" id="quick_view">
@@ -324,6 +373,7 @@
     <script src="{{ asset('bundles/app/js/template/main.js') }}" type="text/javascript"></script>
 
 
+    <script src="{{ asset('bundles/app/js/request_call.js') }}" type="text/javascript"></script>
     <script src="{{ asset('bundles/app/js/basket.js') }}" type="text/javascript"></script>
 
 

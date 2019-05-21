@@ -21,6 +21,19 @@ services:
                  }
           public: true
 
+      admin.product:
+          class: AppBundle\Admin\ProductAdmin
+          arguments: [~, AppBundle\Entity\Product, ~]
+          tags:
+              - {
+                  name: sonata.admin,
+                  manager_type: orm,
+                  label:  товар,
+                  group: "Добавить товар",
+                  icon: '<i class="fa fa-users"></i>'
+                 }
+          public: true
+
       admin.about.site:
           class: AppBundle\Admin\AboutSiteAdmin
           arguments: [~, AppBundle\Entity\AboutSite, ~]
@@ -33,19 +46,6 @@ services:
                   icon: '<i class="fa fa-users"></i>'
                  }
           public: true
-
-      admin.product:
-                class: AppBundle\Admin\ProductAdmin
-                arguments: [~, AppBundle\Entity\Product, ~]
-                tags:
-                    - {
-                        name: sonata.admin,
-                        manager_type: orm,
-                        label:  товар,
-                        group: "Добавить товар",
-                        icon: '<i class="fa fa-users"></i>'
-                       }
-                public: true
 
       admin.home.silder:
                 class: AppBundle\Admin\HomeSilderAdmin
