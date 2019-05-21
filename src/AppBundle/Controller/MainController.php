@@ -58,6 +58,9 @@ class MainController extends BaseController
     {
         $em = $this->getDoctrine()->getManager();
         $term = $request->request->get('term');
+        if($term == null){
+            return $this->redirectToRoute('home');
+        }
         $categoryRepo =$em->getRepository("AppBundle:Category");
         $productRepo =$em->getRepository("AppBundle:Product");
         $catSearch = $categoryRepo->search($term);

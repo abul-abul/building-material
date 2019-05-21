@@ -13,35 +13,73 @@
                         <div class="blog-wrapper">
                             <div class="row">
 
-                                {% for product in products %}
-                                <div class="col-xl-4 col-lg-6 col-md-6">
-                                    <div class="blog-item-single">
-                                        <article class="blog-post">
-                                            <div class="blog-post-content">
-                                                <div class="blog-top">
+                                {% if products and catSearch  %}
+                                    {% for product in products %}
+                                        <div class="col-xl-4 col-lg-6 col-md-6">
+                                            <div class="blog-item-single">
+                                                <article class="blog-post">
+                                                    <div class="blog-post-content">
+                                                        <div class="blog-top" style="border-left: 6px solid #fff;">
 
-                                                    <div class="post-blog-meta">
-                                                        <p>
-                                                            <a href="#">
-                                                                {{ product.name }}
-                                                            </a>
-                                                        </p>
+                                                            <div class="post-blog-meta">
+                                                                <p>
+                                                                    <a href="{{ path('product_inner',{'id' : product.id}) }}">
+                                                                        {{ product.name }}
+                                                                    </a>
+                                                                </p>
+                                                            </div>
+                                                        </div>
+
                                                     </div>
-                                                </div>
+                                                    <div class="blog-thumb img-full">
+                                                        <a href="{{ path('product_inner',{'id' : product.id}) }}">
+                                                            <img src="{% path product.image,'list' %}" alt="">
+                                                        </a>
+                                                    </div>
+                                                    <div class="blog-content">
 
+                                                        <p>
+                                                            {{ product.description }}
+                                                        </p>
+
+                                                    </div>
+
+                                                </article>
                                             </div>
-                                            <div class="blog-content">
+                                        </div>
 
-                                                <p>
-                                                    {{ product.description }}
-                                                </p>
+                                    {% endfor %}
 
+
+                                    {% for cat in catSearch %}
+
+                                        <div class="col-xl-4 col-lg-6 col-md-6">
+                                            <div class="blog-item-single">
+                                                <article class="blog-post">
+                                                    <div class="blog-post-content">
+                                                        <div class="blog-top" style="border-left: 6px solid #fff;">
+
+                                                            <div class="post-blog-meta">
+                                                                <p>
+                                                                    <a href="{{ path('product_list',{'id' : cat.id}) }}">
+                                                                        {{ cat.name }}
+                                                                    </a>
+                                                                </p>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+
+
+
+                                                </article>
                                             </div>
-                                        </article>
-                                    </div>
-                                </div>
+                                        </div>
+                                    {% endfor %}
+                                {% else %}
+                                    <div style="width: 100%" class="error"> По вашему запросу ничего не найдено</div>
+                                {% endif %}
 
-                                {% endfor %}
                             </div>
                         </div>
 
