@@ -1,0 +1,86 @@
+{% extends 'AppBundle::layout.html.twig' %}
+{% block stylesheets %}
+    {{  parent() }}
+    <link href='{{ asset('bundles/app/css/template/style.css') }}' rel='stylesheet' type='text/css'>
+{% endblock %}
+
+{% block main %}
+    <main>
+        <!-- blog main wrapper start -->
+        <div class="blog-main-wrapper pt-100 pb-100 pt-sm-58 pb-sm-58">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 order-2">
+                        <div class="blog-sidebar-wrapper mt-md-100 mt-sm-58">
+
+                            <div class="blog-sidebar">
+                                <h4 class="title">категории</h4>
+                                <ul class="blog-archive">
+                                    {% for cat in categorys %}
+                                        <li>
+                                            <a href="{{ path('product_list',{'id' : cat.id}) }}">{{ cat.name }}</a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div> <!-- single sidebar end -->
+
+
+                            {% if about.image is defined %}
+                            <div class="blog-sidebar">
+                                <h4 class="title"></h4>
+                                <div class="advertising-thumb img-full fix">
+                                    <a href="#">
+
+                                        <img src="{% path about.image,'list' %}" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="col-lg-9 order-1">
+                        <div class="blog-wrapper">
+                            <div class="blog-item-single">
+                                <article class="blog-post blog-details">
+
+                                    
+                                    <div class="blog-post-content">
+
+                                        <div class="blog-thumb">
+                                            <div class="blog-gallery-slider slider-arrow-style slider-arrow-style__style-2">
+                                                 {% if about.gallery.galleryHasMedias is defined %}
+                                                     {% for i,galleryHasMedia in about.gallery.galleryHasMedias %}
+                                                         <div class="blog-single-slide">
+                                                             <img src="{% path galleryHasMedia.media, 'big' %}" alt="">
+                                                         </div>
+                                                     {% endfor %}
+
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    {% if about is defined %}
+                                    <div class="blog-content blog-details">
+                                        <h4>{{ about.title }}</h4>
+                                        <p>
+                                            {{ about.description }}
+                                        </p>
+
+                                    </div>
+                                    {% endif %}
+
+                                </article>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- blog main wrapper end -->
+    </main>
+
+{% endblock %}

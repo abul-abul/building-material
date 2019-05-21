@@ -34,7 +34,18 @@ class AboutSite
     protected $description;
 
 
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", cascade={"persist"})
+     */
+    protected $image;
 
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Gallery", cascade={"persist"})
+     */
+    protected $gallery;
+    
 
 
     /**
@@ -93,5 +104,53 @@ class AboutSite
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * Set image.
+     *
+     * @param \Application\Sonata\MediaBundle\Entity\Media|null $image
+     *
+     * @return AboutSite
+     */
+    public function setImage(\Application\Sonata\MediaBundle\Entity\Media $image = null)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image.
+     *
+     * @return \Application\Sonata\MediaBundle\Entity\Media|null
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * Set gallery.
+     *
+     * @param \Application\Sonata\MediaBundle\Entity\Gallery|null $gallery
+     *
+     * @return AboutSite
+     */
+    public function setGallery(\Application\Sonata\MediaBundle\Entity\Gallery $gallery = null)
+    {
+        $this->gallery = $gallery;
+
+        return $this;
+    }
+
+    /**
+     * Get gallery.
+     *
+     * @return \Application\Sonata\MediaBundle\Entity\Gallery|null
+     */
+    public function getGallery()
+    {
+        return $this->gallery;
     }
 }

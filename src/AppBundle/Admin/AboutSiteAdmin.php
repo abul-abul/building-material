@@ -41,7 +41,8 @@ class AboutSiteAdmin extends Admin
             ->add('description', null, array(
                 'label' => 'Описание',
             ))
-
+            ->add('image', 'sonata_type_model_list',array( 'label' => 'Картинки' ), array('required' => false), array('link_parameters' => array('context' => 'default')))
+            ->add('gallery', 'sonata_type_model_list',array( 'label' => 'Галерея' ), array('required' => false), array('link_parameters' => array('context' => 'default')))
         ;
     }
 

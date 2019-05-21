@@ -52,6 +52,13 @@
                                         </a>
 
                                     </li>
+
+                                    <li >
+                                        <a href="{{ path('about') }}">
+                                            О нас
+                                        </a>
+
+                                    </li>
                                     <li>
                                         <a href="#">
                                             КАТЕГОРИИ
@@ -61,7 +68,6 @@
                                             {{ render(controller('AppBundle:Base:categoryRand')) }}
                                         </ul>
                                     </li>
-
                                     <li>
                                         <a href="#"  data-toggle="modal" data-target="#phone_request">
                                             Заказать звонок
@@ -107,9 +113,9 @@
 
     <!-- Start Search Popup -->
     <div class="box-search-content search_active block-bg close__top">
-        <form class="minisearch" action="#">
+        <form class="minisearch" action="{{ path('search') }}" method="post">
             <div class="field__search">
-                <input type="text" placeholder="Поиск">
+                <input type="text" placeholder="Поиск" name="term">
                 <div class="action">
                     <a href="#"><i class="fa fa-search"></i></a>
                 </div>

@@ -10,4 +10,21 @@ namespace AppBundle\Entity\Repository;
  */
 class CategoryRepository extends \Doctrine\ORM\EntityRepository
 {
+
+    public function search($term)
+    {
+        $qb = $this->createQueryBuilder('n');
+
+        $qb = $this->getEntityManager()
+            ->createQueryBuilder()
+            ->select('a')
+            ->from('AppBundle:Category', 'a')
+            ->where('a.name LIKE :name')
+            ->setParameter('name', '%'.$term.'%')
+
+        ;
+        $result = $qb->getQuery()->getResult();
+
+        return $result;
+    }
 }

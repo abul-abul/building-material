@@ -10,21 +10,18 @@ namespace AppBundle\Entity\Repository;
  */
 class ProductRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function rebateProduct()
+    public function search($term)
     {
         $qb = $this->createQueryBuilder('n');
 
         $qb = $this->getEntityManager()
             ->createQueryBuilder()
-            ->select('n')
-            ->from('AppBundle:Product', 'n')
-            ->where('n.rebate is not null')
+            ->select('a')
+            ->from('AppBundle:Product', 'a')
+            ->where('a.name LIKE :name')
+            ->setParameter('name', '%'.$term.'%')
 
-
-            ->setMaxResults(2)
-
-
-;
+        ;
         $result = $qb->getQuery()->getResult();
 
         return $result;

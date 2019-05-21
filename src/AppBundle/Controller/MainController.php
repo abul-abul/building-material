@@ -40,13 +40,6 @@ class MainController extends BaseController
             array_push($products,$product);
         }
 
-
-
-
-
-
-
-      //  $rebateProducts = $productRepo->rebateProduct();
         return [
 
             'categorys'=>$category,
@@ -56,6 +49,29 @@ class MainController extends BaseController
         ];
 
     }
+
+    /**
+     * @Route("/search", name="search")
+     * @Template()
+     */
+    public function searchAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $term = $request->request->get('term');
+        $categoryRepo =$em->getRepository("AppBundle:Category");
+        $productRepo =$em->getRepository("AppBundle:Product");
+        $catSearch = $categoryRepo->search($term);
+        $praductSearch = $productRepo->search($term);
+
+        return [
+            'products'=>$praductSearch,
+            'catSearch'=>$catSearch
+        ];
+
+    }
+
+
+
 
 
 }
