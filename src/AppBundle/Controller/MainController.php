@@ -63,8 +63,8 @@ class MainController extends BaseController
         }
         $categoryRepo =$em->getRepository("AppBundle:Category");
         $productRepo =$em->getRepository("AppBundle:Product");
-        $catSearch = $categoryRepo->search($term);
-        $praductSearch = $productRepo->search($term);
+        $catSearch = $categoryRepo->search(trim($term));
+        $praductSearch = $productRepo->search(trim($term));
 
         return [
             'products'=>$praductSearch,

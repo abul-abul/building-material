@@ -131,7 +131,19 @@
                                             </a>
 
                                             <div class="product-action-link">
-                                                <a href="#" data-toggle="modal" data-target="#quick_view"> <span data-toggle="tooltip" data-placement="left" title="" data-original-title=""><i class="ion-ios-eye-outline"></i></span> </a>
+                                                <a
+                                                        href="#"
+                                                        data-toggle="modal"
+                                                        data-target="#quick_view_product"
+                                                        class="product_modal_view"
+                                                        data-id="{{ product.id }}"
+                                                        data-image = "{% if product.image is defined %}{% path product.image,'list' %}{% endif %}"
+
+                                                >
+                                                    <span data-toggle="tooltip" data-placement="left" title="">
+                                                        <i class="ion-ios-eye-outline"></i>
+                                                    </span>
+                                                </a>
                                                 {#<a href="#" data-toggle="tooltip" data-placement="left" title="" data-original-title="Compare"><i class="ion-ios-loop"></i></a>#}
                                                 {#<a href="#" data-toggle="tooltip" data-placement="left" title="" data-original-title="Wishlist"><i class="ion-ios-shuffle"></i></a>#}
                                             </div>
@@ -165,7 +177,7 @@
                                                 {% endif %}
                                             </div>
                                             <div class="product-btn">
-                                                <a href="#"><i class="ion-bag"></i>Добавить корзину</a>
+                                                <a data-id="{{ product.id }}" class="add_basket" href="#"><i class="ion-bag"></i>Добавить корзину</a>
                                             </div>
 
                                         </div>
@@ -186,8 +198,20 @@
                                                 {#</div>#}
                                             {#</div>#}
                                             <div class="product-action-link">
-                                                <a href="#" data-toggle="modal" data-target="#quick_view"> <span data-toggle="tooltip" data-placement="left" title="" data-original-title=""><i class="ion-ios-eye-outline"></i></span> </a>
+                                                {#<a href="#" data-toggle="modal" data-target="#quick_view"> <span data-toggle="tooltip" data-placement="left" title="" data-original-title=""><i class="ion-ios-eye-outline"></i></span> </a>#}
+                                                <a
+                                                        href="#"
+                                                        data-toggle="modal"
+                                                        data-target="#quick_view_product"
+                                                        class="product_modal_view"
+                                                        data-id="{{ product.id }}"
+                                                        data-image = "{% if product.image is defined %}{% path product.image,'list' %}{% endif %}"
 
+                                                >
+                                                    <span data-toggle="tooltip" data-placement="left" title="">
+                                                        <i class="ion-ios-eye-outline"></i>
+                                                    </span>
+                                                </a>
 
                                             </div>
                                         </div>
@@ -220,7 +244,7 @@
                                                 {{ product.description }}
                                             </p>
                                             <div class="product-btn product-btn__color">
-                                                <a href="#"><i class="ion-bag"></i>Добавить корзину</a>
+                                                <a data-id="{{ product.id }}" class="add_basket" href="#"><i class="ion-bag"></i>Добавить корзину</a>
                                             </div>
                                         </div>
                                     </div>
@@ -250,4 +274,74 @@
             </div>
         </div>
     </main>
+
+
+
+
+    <div class="modal" id="quick_view_product">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <!-- product details inner end -->
+                    <div class="product-details-inner">
+                        <div class="row">
+                            <div class="col-lg-5 col-md-5">
+                                <div class="product-large-slider mb-20 slider-arrow-style slider-arrow-style__style-2 large_silder_product">
+                                    <div class="pro-large-img">
+                                        {#<img  src="/bundles/app/images/product/product-details-img1.jpg" alt="" />#}
+                                    </div>
+                                    {#<div class="pro-large-img">#}
+                                    {#<img src="/bundles/app/images//product/product-details-img2.jpg" alt=""/>#}
+                                    {#</div>#}
+                                    {#<div class="pro-large-img">#}
+                                    {#<img src="/bundles/app/images/product/product-details-img3.jpg" alt=""/>#}
+                                    {#</div>#}
+                                    {#<div class="pro-large-img">#}
+                                    {#<img src="/bundles/app/images/product/product-details-img4.jpg" alt=""/>#}
+                                    {#</div>#}
+                                    {#<div class="pro-large-img">#}
+                                    {#<img src="/bundles/app/images/product/product-details-img4.jpg" alt=""/>#}
+                                    {#</div>#}
+                                </div>
+                                <div class="pro-nav slick-padding2 slider-arrow-style slider-arrow-style__style-2 small_silder_product">
+                                    {#<div class="pro-nav-thumb"><img src="/bundles/app/images/product/product-details-img1.jpg" alt="" /></div>#}
+                                    {#<div class="pro-nav-thumb"><img src="/bundles/app/images/product/product-details-img2.jpg" alt="" /></div>#}
+                                    {#<div class="pro-nav-thumb"><img src="/bundles/app/images/product/product-details-img3.jpg" alt="" /></div>#}
+                                    {#<div class="pro-nav-thumb"><img src="/bundles/app/images/product/product-details-img4.jpg" alt="" /></div>#}
+                                    {#<div class="pro-nav-thumb"><img src="/bundles/app/images/product/product-details-img5.jpg" alt="" /></div>#}
+                                </div>
+                            </div>
+                            <div class="col-lg-7 col-md-7">
+                                <div class="product-details-des pt-sm-30 ">
+                                    <h3 class="product_modal_title">
+
+                                    </h3>
+
+                                    <div class="pricebox">
+                                        <span class="regular-price product_modal_price">
+
+                                        </span>
+                                    </div>
+                                    <p class="product_modal_desc">
+                                    </p>
+                                    <div class="quantity-cart-box d-flex align-items-center mb-24">
+
+                                        {#<div class="product-btn product-btn__color">#}
+                                        {#<a href="#"><i class="ion-bag"></i>Добавить корзину</a>#}
+                                        {#</div>#}
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- product details inner end -->
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

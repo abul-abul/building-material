@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -95,6 +96,33 @@ class ProductController extends BaseController
            'productsRend' => $productsRend,
            'categorys'=>$categorys
        ];
+    }
+
+
+    /**
+     * @Route("/one-product", name="one_product")
+     */
+    public function oneProductAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $result = $request->request->all();
+        $id = $result['id'];
+        $product =$em->getRepository("AppBundle:Product")->find($id);
+
+        $productArray = [];
+
+        $productArray['name'] = $product->getName();
+        $productArray['description'] = $product->getDescription();
+        $productArray['price'] = $product->getPrice();
+        $productArray['rebate'] = $product->getRebate();
+
+        foreach ($product->getGallery()->getGalleryHasMedias() as $file){
+           $pathImg = $this->container->get('sonata.media.twig.extension')->path($file, 'reference');
+            $productArray['image'][] = $pathImg;
+        }
+
+        return new JsonResponse($productArray);
+
     }
 
 

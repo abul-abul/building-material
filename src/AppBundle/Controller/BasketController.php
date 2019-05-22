@@ -39,7 +39,7 @@ class BasketController extends BaseController
 
             $arrString = implode(",",$arrCook);
 
-            $cookie = new Cookie('productId',$arrString, strtotime('now + 60 minutes'));
+            $cookie = new Cookie('productId',$arrString, time()+31556926);
 
 
 
