@@ -9,6 +9,8 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class BaseController extends Controller
 {
+// stroyluxe_prod
+// 8M3u0K4r
 
     public function infoRandAction()
     {

@@ -104,9 +104,9 @@ class ProductAdmin extends Admin
             ->add('price', null, array(
                 'label' => 'Цена',
             ))
-            ->add('countPrice', null, array(
-                'label' => 'Количество заказа',
-            ))
+//            ->add('countPrice', null, array(
+//                'label' => 'Количество заказа',
+//            ))
             ->add('rebate', null, array(
                 'label' => 'Скидка',
             ))
