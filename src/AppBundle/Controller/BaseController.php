@@ -88,10 +88,19 @@ class BaseController extends Controller
         }
 //dump($priceTotal);
 //die;
+        if(count($objProducts) == 0 || $objProducts[0] == null){
+            $objProductsCount = 0;
+
+        }else{
+            $objProductsCount = count($objProducts);
+
+        }
+
         return $this->render('AppBundle:base:basketProductCount.html.twig',
             array(
+                'objProducts'=>$objProducts,
                 'priceTotal' =>$priceTotal,
-                'countProductBasket'=>count($objProducts)
+                'countProductBasket'=>$objProductsCount
 
             )
         );

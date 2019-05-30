@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="meta description">
 
+
+
     <title>{% block title %}Welcome!{% endblock %}</title>
     {% block stylesheets %}
         <link href='{{ asset('bundles/app/css/template/bootstrap.min.css') }}' rel='stylesheet' type='text/css'>
@@ -29,6 +31,7 @@
 <!-- header area start -->
 <!-- header area start -->
 <header>
+
 {#abuladamyan@gmail.com#}
 {#adamyan9090#}
     <!-- main menu area start -->
@@ -95,12 +98,12 @@
                                     {{ render(controller('AppBundle:Base:basketProductCount')) }}
                                 </span>
                             </div>
-                            <ul class="cart-list">
+                            {#<ul class="cart-list">#}
 
                                 {{ render(controller('AppBundle:Base:basketProduct')) }}
 
 
-                            </ul>
+                            {#</ul>#}
                         </div>
 
                     </div>
@@ -194,7 +197,7 @@
                 <div class="row align-items-center">
                     <div class="col-md-6 order-2 order-md-1">
                         <div class="copyright-text">
-                            <p>copyright <a href="#">HasTech</a>. All Rights Reserved</p>
+                            <p> COPYRIGHT. ВСЕ ПРАВА ЗАЩИЩЕНЫ</p>
                         </div>
                     </div>
                     <div class="col-md-6 ml-auto order-1 order-md-2">

@@ -523,7 +523,7 @@ body.modal-open {
 /* ----scroll to top css ----*/
 .scroll-top {
     background-color: #2aaf74;
-    bottom: 50px;
+    bottom: 103px;
     -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
     box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
     cursor: pointer;

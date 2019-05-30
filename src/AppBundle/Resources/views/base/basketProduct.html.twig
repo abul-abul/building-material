@@ -1,7 +1,8 @@
 
 {% if products is defined and products[0] is not null%}
-
+    <ul class="cart-list">
     {% for product in products %}
+
         <li>
             <div class="cart-img">
                 <a href="{{ path('product_inner',{'id' : product.id}) }}">
@@ -25,6 +26,7 @@
         </li>
 
     {% endfor %}
+    </ul>
     {#<li class="mini-cart-price">#}
         {#<span class="subtotal">subtotal : </span>#}
         {#<span class="subtotal-price ml-auto">{{ priceTotal }}</span>#}
