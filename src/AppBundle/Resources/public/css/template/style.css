@@ -2303,6 +2303,7 @@ only screen and (min-width: 768px) and (max-width: 991px) {
 }
 
 .product-thumb img {
+    height: 201px;
     margin: auto;
 }
 
@@ -2589,7 +2590,7 @@ only screen and (min-width: 768px) and (max-width: 991px) {
 }
 
 .product-list-item .product-thumb {
-    width: 240px;
+    width: 323px;
     -webkit-box-flex: 1;
     -ms-flex: 1 0 auto;
     flex: 1 0 auto;
