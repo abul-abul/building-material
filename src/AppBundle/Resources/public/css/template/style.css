@@ -4350,6 +4350,7 @@ only screen and (max-width: 767px) {
 }
 
 .paginatoin-area {
+    margin-top: 133px!important;
     padding: 20px 0 18px;
     border: 1px solid #ededed;
 }
