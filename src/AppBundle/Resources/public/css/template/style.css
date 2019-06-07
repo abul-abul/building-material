@@ -4355,7 +4355,16 @@ only screen and (max-width: 767px) {
     padding: 20px 0 18px;
     border: 1px solid #ededed;
 }
-
+.pagination-box{
+    width: 302px;
+    margin: 0 auto;
+}
+.pagination{
+    padding: 0;
+}
+.pagination span{
+    font-size:16px;
+}
 .paginatoin-area .pagination-box li {
     display: inline-block;
 }
