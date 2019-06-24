@@ -130,6 +130,8 @@
                                                 <img src="{% path product.image,'list' %}" alt="product image">
                                             </a>
 
+
+
                                             <div class="product-action-link">
                                                 <a
                                                         href="#"
@@ -189,14 +191,18 @@
                                             <a href="{{ path('product_inner',{'id' : product.id}) }}">
                                                 <img src="{% path product.image,'list' %}" alt="product image">
                                             </a>
-                                            {#<div class="box-label">#}
-                                                {#<div class="product-label new">#}
-                                                    {#<span>new</span>#}
-                                                {#</div>#}
-                                                {#<div class="product-label discount">#}
-                                                    {#<span>-5%</span>#}
-                                                {#</div>#}
-                                            {#</div>#}
+                                            {% if product.rebate != null  %}
+                                                {% set price = product.price|split('руб') %}
+                                                {% set rebate = product.rebate|split('руб') %}
+                                               {% set procent = rebate[0]|round*100/price[0]|round %}
+                                                                                               {#{% set procent =  %}#}
+                                                <div class="box-label">
+
+                                                    <div class="product-label discount">
+                                                        <span>скидка {{ 100-procent|round }}%</span>
+                                                    </div>
+                                                </div>
+                                            {% endif %}
                                             <div class="product-action-link">
                                                 {#<a href="#" data-toggle="modal" data-target="#quick_view"> <span data-toggle="tooltip" data-placement="left" title="" data-original-title=""><i class="ion-ios-eye-outline"></i></span> </a>#}
                                                 <a
