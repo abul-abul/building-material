@@ -80,11 +80,37 @@ class OrderController extends BaseController
                 return $this->redirectToRoute('product_inner', array('id' => $result['product_id']));
             }
 
+
+
             $product =$em->getRepository("AppBundle:Product")->find($result['product_id']);
             $buyObj->setProduct($product);
 
             $em->persist($buyObj);
             $em->flush();
+
+
+
+            $email = $result['email'];
+            $subject = 'Stroy Luxe';
+            $senderEmail = 'stroyloxe@stroyluxe.com';
+
+            $message =  \Swift_Message::newInstance()
+
+                ->setSubject($subject)
+                ->setFrom($senderEmail)
+                ->setTo($email)
+                ->setBody(
+                    $this->renderView(
+                        'AppBundle:Email:order.html.twig',
+                        array(
+                            'name' => $product->getName(),
+                            'price' => $product->getPrice()
+                        )
+                    ),
+                    'text/html'
+                );
+            ;
+            $this->get('mailer')->send($message);
 
             $this->get('session')->getFlashBag()->add('success', 'Спасибо за ваш заказ мы свяжемся с вами ');
             return $this->redirectToRoute('product_inner', array('id' => $result['product_id']));
