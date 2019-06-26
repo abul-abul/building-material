@@ -93,24 +93,33 @@ class OrderController extends BaseController
             $email = $result['email'];
             $subject = 'Stroy Luxe';
             $senderEmail = 'stroyloxe@stroyluxe.com';
+            $to      = $email;
+            $subject = 'the subject';
+            $message = 'hello';
+            $headers = array(
+                'From' => $senderEmail,
+                'Reply-To' => 'webmaster@example.com',
+                'X-Mailer' => 'PHP/' . phpversion()
+            );
 
-            $message =  \Swift_Message::newInstance()
-
-                ->setSubject($subject)
-                ->setFrom($senderEmail)
-                ->setTo($email)
-                ->setBody(
-                    $this->renderView(
-                        'AppBundle:Email:order.html.twig',
-                        array(
-                            'name' => $product->getName(),
-                            'price' => $product->getPrice()
-                        )
-                    ),
-                    'text/html'
-                );
-            ;
-            $this->get('mailer')->send($message);
+            mail($to, $subject, $message, $headers);
+//            $message =  \Swift_Message::newInstance()
+////T8a9G4b0
+//                ->setSubject($subject)
+//                ->setFrom($senderEmail)
+//                ->setTo($email)
+//                ->setBody(
+//                    $this->renderView(
+//                        'AppBundle:Email:order.html.twig',
+//                        array(
+//                            'name' => $product->getName(),
+//                            'price' => $product->getPrice()
+//                        )
+//                    ),
+//                    'text/html'
+//                );
+//            ;
+//            $this->get('mailer')->send($message);
 
             $this->get('session')->getFlashBag()->add('success', 'Спасибо за ваш заказ мы свяжемся с вами ');
             return $this->redirectToRoute('product_inner', array('id' => $result['product_id']));
