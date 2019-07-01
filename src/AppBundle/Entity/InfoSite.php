@@ -30,7 +30,7 @@ class InfoSite
 
     /**
      * @var
-     * @ORM\Column(name="phone", type="integer", nullable=true)
+     * @ORM\Column(name="phone", type="string", nullable=true)
      */
     protected $phone;
 
