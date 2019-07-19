@@ -19,8 +19,8 @@ class CategoryRepository extends \Doctrine\ORM\EntityRepository
             ->createQueryBuilder()
             ->select('a')
             ->from('AppBundle:Category', 'a')
-            ->where('a.name LIKE :name')
-            ->setParameter('name', '%'.$term.'%')
+            ->where('a.name LIKE :term')
+            ->setParameter('term', '%'.$term.'%')
 
         ;
         $result = $qb->getQuery()->getResult();
