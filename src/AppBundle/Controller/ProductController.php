@@ -22,7 +22,7 @@ class ProductController extends BaseController
         $em = $this->getDoctrine()->getManager();
         $productRepo =$em->getRepository("AppBundle:Product");
         $category =$em->getRepository("AppBundle:Category")->find($id);
-        $categorys =$em->getRepository("AppBundle:Category")->findAll();
+        $categorys =$em->getRepository("AppBundle:Category")->findBy(array('status'=>1));
        // dump($categorys);die;
         $product = $productRepo->findBy(array('category' => $id));
 
@@ -71,7 +71,7 @@ class ProductController extends BaseController
 //dump($request->cookies);die;
         $em = $this->getDoctrine()->getManager();
         $product =$em->getRepository("AppBundle:Product")->find($id);
-        $categorys =$em->getRepository("AppBundle:Category")->findAll();
+        $categorys =$em->getRepository("AppBundle:Category")->findBy(array('status'=>1));
         $query = 'SELECT id FROM  product
                 ORDER BY RAND()
                 LIMIT 4';

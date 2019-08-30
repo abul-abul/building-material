@@ -33,6 +33,9 @@ class CategoryAdmin extends Admin
             ->add('name', null, array(
                 'label' => 'Имя',
             ))
+            ->add('status', null, array(
+                'label' => 'status',
+            ))
 
         ;
     }
@@ -55,6 +58,9 @@ class CategoryAdmin extends Admin
             ->add('id')
             ->add('name', null, array(
                 'label' => 'Имя',
+            ))
+            ->add('status', null, array(
+                'label' => 'status',
             ))
             ->add('_action', 'actions', array(
                 'actions' => array(

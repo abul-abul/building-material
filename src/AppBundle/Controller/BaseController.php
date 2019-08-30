@@ -40,7 +40,7 @@ class BaseController extends Controller
     public function categoryRandAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $categorys =$em->getRepository("AppBundle:Category")->findAll();
+        $categorys =$em->getRepository("AppBundle:Category")->findBy(array('status'=>1));
         return $this->render('AppBundle:base:category.html.twig',
             array(
                 'categorys'=>$categorys

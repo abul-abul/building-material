@@ -17,7 +17,7 @@ class MainController extends BaseController
     {
         $em = $this->getDoctrine()->getManager();
         $homeSilder =$em->getRepository("AppBundle:HomeSlider")->findAll();
-        $category =$em->getRepository("AppBundle:Category")->findAll();
+        $category =$em->getRepository("AppBundle:Category")->findBy(array('status'=>1));
 
 
 

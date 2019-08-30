@@ -34,6 +34,15 @@ class Category
     protected $product;
 
     /**
+     * @ORM\Column(
+     *     name="status",
+     *     type="boolean",
+     *     options={"default": 1}
+     * )
+     */
+    private $status = 1;
+
+    /**
      * @return string
      */
     public function __toString()
@@ -116,5 +125,29 @@ class Category
     public function getProduct()
     {
         return $this->product;
+    }
+
+    /**
+     * Set status.
+     *
+     * @param bool $status
+     *
+     * @return Category
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status.
+     *
+     * @return bool
+     */
+    public function getStatus()
+    {
+        return $this->status;
     }
 }
