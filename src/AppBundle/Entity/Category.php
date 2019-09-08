@@ -40,7 +40,7 @@ class Category
      *     options={"default": 1}
      * )
      */
-    private $status = 1;
+    private $status = true;
 
     /**
      * @return string
