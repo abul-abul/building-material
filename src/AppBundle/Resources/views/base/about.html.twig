@@ -1,3 +1,4 @@
+{% if about is defined %}
 <div class="footer-widget-title">
     <h3>{{ about.title }}</h3>
 </div>
@@ -6,3 +7,4 @@
         {{ about.description }}
     </p>
 </div>
+{% endif %}
