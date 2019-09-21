@@ -7,21 +7,23 @@
 
     <div class="hero-area">
         <div class="hero-slider-active slider-arrow-style slick-dot-style hero-dot">
-            {% for homeSilder in homeSilders %}
-                <div class="hero-single-slide hero-1 d-flex align-items-center" style="background-image: url({% path homeSilder.image,'reference' %});">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col">
-                                <div class="slider-content">
-                                    <h1>{{ homeSilder.name }}</h1>
-                                    <h3>{{ homeSilder.description }}</h3>
+           {% if homeSilders %}
+                {% for homeSilder in homeSilders %}
+                    <div class="hero-single-slide hero-1 d-flex align-items-center" style="background-image: url({% path homeSilder.image,'reference' %});">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="slider-content">
+                                        <h1>{{ homeSilder.name }}</h1>
+                                        <h3>{{ homeSilder.description }}</h3>
 
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            {% endfor %}
+                {% endfor %}
+            {% endif %}
         </div>
     </div>
 
