@@ -26,7 +26,7 @@
                             </div> <!-- single sidebar end -->
 
 
-                            {% if about.image is defined%}
+                            {% if about is not null %}
                             <div class="blog-sidebar">
                                 <h4 class="title"></h4>
                                 <div class="advertising-thumb img-full fix">
@@ -62,7 +62,7 @@
                                     </div>
 
 
-                                    {% if about is defined %}
+                                    {% if about is not null %}
                                     <div class="blog-content blog-details">
                                         <h4>{{ about.title }}</h4>
                                         <p>
