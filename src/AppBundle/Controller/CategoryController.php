@@ -16,13 +16,30 @@ class CategoryController extends BaseController
     public function categoryListAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        $homeSilder =$em->getRepository("AppBundle:HomeSlider")->findAll();
+        $category =$em->getRepository("AppBundle:Category")->findAll();
 
 
       //  $rebateProducts = $productRepo->rebateProduct();
         return [
+            'categorys' => $category
+        ];
+
+    }
+
+    /**
+     * @Route("/category-inner/{id}", name="oneCategory")
+     * @Template()
+     */
+    public function oneCategoryAction($id,Request $request)
+    {
+
+        $em = $this->getDoctrine()->getManager();
+        $category = $em->getRepository("AppBundle:Category")->find($id);
 
 
+      //  $rebateProducts = $productRepo->rebateProduct();
+        return [
+            'categorys' => $category
         ];
 
     }

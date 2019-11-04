@@ -34,6 +34,17 @@ class Category
     protected $product;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="children")
+     * @ORM\JoinColumn(name="parent_category", referencedColumnName="id", onDelete="SET NULL")
+     */
+    protected $parent_category;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Category", mappedBy="parent_category")
+     */
+    private $children;
+
+    /**
      * @ORM\Column(
      *     name="status",
      *     type="boolean",
@@ -149,5 +160,65 @@ class Category
     public function getStatus()
     {
         return $this->status;
+    }
+
+    /**
+     * Set parentCategory.
+     *
+     * @param \AppBundle\Entity\Category|null $parentCategory
+     *
+     * @return Category
+     */
+    public function setParentCategory(\AppBundle\Entity\Category $parentCategory = null)
+    {
+        $this->parent_category = $parentCategory;
+
+        return $this;
+    }
+
+    /**
+     * Get parentCategory.
+     *
+     * @return \AppBundle\Entity\Category|null
+     */
+    public function getParentCategory()
+    {
+        return $this->parent_category;
+    }
+
+    /**
+     * Add child.
+     *
+     * @param \AppBundle\Entity\Category $child
+     *
+     * @return Category
+     */
+    public function addChild(\AppBundle\Entity\Category $child)
+    {
+        $this->children[] = $child;
+
+        return $this;
+    }
+
+    /**
+     * Remove child.
+     *
+     * @param \AppBundle\Entity\Category $child
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeChild(\AppBundle\Entity\Category $child)
+    {
+        return $this->children->removeElement($child);
+    }
+
+    /**
+     * Get children.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getChildren()
+    {
+        return $this->children;
     }
 }
