@@ -48,7 +48,7 @@
                                         <div class="blog-item-single">
                                             <article class="blog-post">
                                                 <div class="blog-post-content">
-                                                   {% if category.parentCategory is  null %}
+                                                   {% if category.children|length > 0 %}
                                                     <a href="{{ path('oneCategory',{'id':category.id}) }}">
                                                     {% else %}
                                                         <a href="{{ path('product_list',{'id':category.id}) }}">
