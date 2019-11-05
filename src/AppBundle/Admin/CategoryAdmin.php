@@ -33,7 +33,7 @@ class CategoryAdmin extends Admin
             ->add('name', null, array(
                 'label' => 'Имя',
             ))
-            ->add('parent_category', null, array('label' => 'Root category', 'query_builder' => function($query) {
+            ->add('parent_category', null, array('label' => 'категория ', 'query_builder' => function($query) {
                     return $query->createQueryBuilder('c')
                         /*->where('c.parent_category is NULL')*/;
                 },)
@@ -67,7 +67,7 @@ class CategoryAdmin extends Admin
                 'label' => 'status',
             ))
             ->add('parent_category', null, array(
-                'label' => 'parent_category',
+                'label' => 'категория ',
             ))
             ->add('_action', 'actions', array(
                 'actions' => array(

@@ -46,8 +46,9 @@
                                                 <ul class="children" style="display: none;">
 
                                                     {% for cat in category.children %}
+
                                                         <li>
-                                                            <a href="{{ path('oneCategory',{'id' : cat.id}) }}">{{ cat.name }}</a>
+                                                            <a href="{{ path('product_list',{'id' : cat.id}) }}">{{ cat.name }}</a>
                                                         </li>
 
                                                     {% endfor %}

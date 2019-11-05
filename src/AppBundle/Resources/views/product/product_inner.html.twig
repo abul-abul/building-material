@@ -235,18 +235,43 @@
                                     <div class="sidebar-body">
                                         <ul class="sidebar-category">
                                             {% for category in categorys %}
-                                                <li class="has-children"><a href="#">{{ category.name }}</a>
-                                                    <ul class="children" style="display: none;">
-                                                        {% for product in category.product  %}
-                                                            <li>
-                                                                <a href="{{ path('product_inner',{'id' : product.id}) }}">{{ product.name }}</a>
-                                                            </li>
+                                                
+                                                {% if category.children|length > 0 %}
+                                                    <li class="has-children"><a href="#">{{ category.name }}</a>
+                                                        <ul class="children" style="display: none;">
 
-                                                        {% endfor %}
-                                                    </ul>
-                                                </li>
+                                                            {% for cat in category.children %}
+
+                                                                <li>
+                                                                    <a href="{{ path('product_list',{'id' : cat.id}) }}">{{ cat.name }}</a>
+                                                                </li>
+
+                                                            {% endfor %}
+                                                        </ul>
+                                                    </li>
+                                                {% else %}
+                                                    <li>
+                                                        <a href="{{ path('product_list',{'id':category.id}) }}">
+                                                            {{ category.name }}
+                                                        </a>
+                                                    </li>
+                                                {% endif %}
                                             {% endfor %}
                                         </ul>
+                                        {#<ul class="sidebar-category">#}
+                                            {#{% for category in categorys %}#}
+                                                {#<li class="has-children"><a href="#">{{ category.name }}</a>#}
+                                                    {#<ul class="children" style="display: none;">#}
+                                                        {#{% for product in category.product  %}#}
+                                                            {#<li>#}
+                                                                {#<a href="{{ path('product_inner',{'id' : product.id}) }}">{{ product.name }}</a>#}
+                                                            {#</li>#}
+
+                                                        {#{% endfor %}#}
+                                                    {#</ul>#}
+                                                {#</li>#}
+                                            {#{% endfor %}#}
+                                        {#</ul>#}
                                     </div>
                                 </div>
                             </div>
