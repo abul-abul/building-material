@@ -21,7 +21,8 @@ class AboutController extends BaseController
     {
         $em = $this->getDoctrine()->getManager();
         $about = $em->getRepository("AppBundle:AboutSite")->findOneBy([]);
-        $category = $em->getRepository("AppBundle:Category")->findBy(array('status'=>1));
+       
+        $category =$em->getRepository("AppBundle:Category")->findBy(['parent_category'=>null,'status'=>1]);
 
         return [
             'about'=> $about,

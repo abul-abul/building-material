@@ -91,21 +91,24 @@
                         <div class="search-wrap">
                             <button type="submit" class="search-trigger"><i class="ion-ios-search-strong"></i></button>
                         </div>
-                        <div class="header-mini-cart">
-                            <div class="mini-cart-btn">
-                                <i class="ion-bag"></i>
-                                <span class="cart-notification">
-                                    {{ render(controller('AppBundle:Base:basketProductCount')) }}
-                                </span>
+                        {#<a href="{{ path('basket') }}">#}
+                            <div class="header-mini-cart">
+
+                                    <div class="mini-cart-btn">
+                                        <i class="ion-bag"></i>
+                                        <span class="cart-notification">
+                                            {{ render(controller('AppBundle:Base:basketProductCount')) }}
+                                        </span>
+                                    </div>
+
+                                {#<ul class="cart-list">#}
+
+                                    {#{{ render(controller('AppBundle:Base:basketProduct')) }}#}
+
+
+                                {#</ul>#}
                             </div>
-                            {#<ul class="cart-list">#}
-
-                                {{ render(controller('AppBundle:Base:basketProduct')) }}
-
-
-                            {#</ul>#}
-                        </div>
-
+                        {#</a>#}
                     </div>
                 </div>
                 <div class="col-12 d-block d-lg-none">

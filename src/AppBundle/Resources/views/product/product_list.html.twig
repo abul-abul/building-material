@@ -42,7 +42,8 @@
                                     <ul class="sidebar-category">
                                         {% for category in categorys %}
                                             {% if category.children|length > 0 %}
-                                            <li class="has-children"><a href="#">{{ category.name }}</a>
+                                            <li class="has-children">
+                                                <a href="#">{{ category.name }}</a>
                                                 <ul class="children" style="display: none;">
 
                                                     {% for cat in category.children %}

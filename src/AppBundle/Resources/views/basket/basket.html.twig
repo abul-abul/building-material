@@ -1,0 +1,60 @@
+{% extends 'AppBundle::layout.html.twig' %}
+{% block title %} Корзина {% endblock %}
+{% block stylesheets %}
+    {{  parent() }}
+    <link href='{{ asset('bundles/app/css/template/style.css') }}' rel='stylesheet' type='text/css'>
+{% endblock %}
+
+{% block main %}
+
+    <main>
+        <!-- blog main wrapper start -->
+        <div class="blog-main-wrapper pt-100 pb-100 pt-sm-58 pb-sm-58">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-12 order-1 order-lg-2">
+                        <div class="blog-wrapper">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                    <div class="blog-item-single">
+                                        <article class="blog-post">
+                                            <div class="blog-post-content">
+                                                <div class="blog-top">
+                                                    <div class="post-date-time">
+                                                        <span>10 December,18 </span>
+                                                    </div>
+                                                    <div class="post-blog-meta">
+                                                        <p>post by <a href="#">HasTech</a></p>
+                                                    </div>
+                                                </div>
+                                                <div class="blog-thumb img-full">
+                                                    <a href="blog-details.html">
+                                                        <img src="assets/img/blog/blog-large-1.jpg" alt="">
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="blog-content">
+                                                <h4><a href="blog-details.html">This is image Post</a></h4>
+                                                <p>
+                                                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                                    Explicabo voluptate in consequatur temporibus ex magni non aperiam corporis, praesentium magnam a fuga eligendi natus est omnis perferendis dolorum quidem minus.
+                                                    Ipsam eveniet inventore quis magni architecto aut ab tempore deserunt amet minus id nulla, laboriosam dignissimos dolorum quasi veniam rerum...
+                                                </p>
+
+                                            </div>
+                                        </article>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- blog main wrapper end -->
+    </main>
+{% endblock %}

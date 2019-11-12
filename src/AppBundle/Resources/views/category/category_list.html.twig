@@ -44,11 +44,13 @@
                         <div class="blog-wrapper">
                             <div class="row">
                                 {% for category in categorys %}
+                                    {% if category.status %}
                                     <div class="col-lg-6">
                                         <div class="blog-item-single">
                                             <article class="blog-post">
                                                 <div class="blog-post-content">
                                                    {% if category.children|length > 0 %}
+                                                    {#{{ dump(category.children[0].id) }}#}
                                                     <a href="{{ path('oneCategory',{'id':category.id}) }}">
                                                     {% else %}
                                                         <a href="{{ path('product_list',{'id':category.id}) }}">
@@ -73,6 +75,7 @@
                                             </article>
                                         </div>
                                     </div>
+                                    {% endif %}
                                 {% endfor %}
                             </div>
                         </div>

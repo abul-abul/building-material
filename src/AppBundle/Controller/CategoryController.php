@@ -16,7 +16,7 @@ class CategoryController extends BaseController
     public function categoryListAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        $category =$em->getRepository("AppBundle:Category")->findAll();
+        $category =$em->getRepository("AppBundle:Category")->findBy(['parent_category'=>null,'status'=>1]);
 
 
       //  $rebateProducts = $productRepo->rebateProduct();
@@ -34,7 +34,7 @@ class CategoryController extends BaseController
     {
 
         $em = $this->getDoctrine()->getManager();
-        $category = $em->getRepository("AppBundle:Category")->find($id);
+        $category = $em->getRepository("AppBundle:Category")->findBy(['parent_category'=>$id,'status'=>1]);
 
 
       //  $rebateProducts = $productRepo->rebateProduct();

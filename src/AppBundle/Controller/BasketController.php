@@ -13,6 +13,17 @@ use Symfony\Component\HttpFoundation\Session\Session;
 
 class BasketController extends BaseController
 {
+
+    /**
+     * @Route("/basket", name="basket")
+     * @Template()
+     */
+    public function basketAction()
+    {
+
+        return [];
+    }
+
     /**
      * @Route("/add-basket", name="add_basket")
      */
