@@ -1,0 +1,38 @@
+
+    {#{% set parent = 0 %}#}
+    {#{% for id,category in cateArrays %}#}
+        {#{% set parent_child = 0 %}#}
+        {#{% set catId = category['id'] %}#}
+        {#{% if category['parent_id'] == parent %}#}
+
+                {#<a href="{{ path('oneCategory',{'id':catId}) }}">#}
+                    {#<div class="blog-item-single">#}
+                        {#<article class="blog-post">#}
+                            {#<div class="blog-post-content">#}
+
+                                {#<div class="blog-top">#}
+                                    {#<div class="post-date-time">#}
+                                        {#<span>{{ category.name }}</span>#}
+                                    {#</div>#}
+                                    {#<div class="post-blog-meta">#}
+                                        {#<p>post by <a href="#">HasTech</a></p>#}
+                                    {#</div>#}
+                                {#</div>#}
+
+                                {#<div class="blog-thumb img-full">#}
+
+                                {#</div>#}
+                            {#</div>#}
+                            {#<div class="blog-content">#}
+                                {#<h4><a href="blog-details.html">This is image Post For XipBlog</a></h4>#}
+
+                            {#</div>#}
+                        {#</article>#}
+                    {#</div>#}
+                {#</a>#}
+        {#{% else %}#}
+            {#{% if category['parent_id'] == parent_child %}#}
+                    {#<span>{{ category.name }}</span>#}
+            {#{% endif %}#}
+        {#{% endif %}#}
+    {#{% endfor %}#}

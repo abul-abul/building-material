@@ -49,7 +49,7 @@
                                                     {% for cat in category.children %}
 
                                                         <li>
-                                                            <a href="{{ path('product_list',{'id' : cat.id}) }}">{{ cat.name }}</a>
+                                                            <a href="{{ path('oneCategory',{'id' : cat.id}) }}">{{ cat.name }}</a>
                                                         </li>
 
                                                     {% endfor %}
@@ -57,7 +57,7 @@
                                             </li>
                                              {% else %}
                                                 <li>
-                                                    <a href="{{ path('product_list',{'id':category.id}) }}">
+                                                    <a href="{{ path('oneCategory',{'id':category.id}) }}">
                                                         {{ category.name }}
                                                     </a>
                                                 </li>

@@ -7,35 +7,12 @@
 
 {% block main %}
 
-    {#{% for category in categorys %}#}
-        {#{% if category.children|length > 0 %}#}
-            {#<li id="nav{{ category.id }}" class="toggle accordion-toggle">#}
-                {#<span class="icon-plus"></span>#}
-                {#<a class="menu-link" href="#">#}
 
-                        {#{{ category.name}}#}
-
-                {#</a>#}
-            {#</li>#}
-            {#<ul class="menu-submenu accordion-content">#}
-                {#{% for cat in category.children %}#}
-                    {#<li>#}
-                        {#<a class="head" href="{{ path('oneCategory',{'id':cat.id}) }}">#}
-                           {#{{ cat.name }}#}
-                        {#</a>#}
-                    {#</li>#}
-                {#{% endfor %}#}
-            {#</ul>#}
-        {#{% else %}#}
-            {#<li class="a menu_main">#}
-                {#<a class="menu-link" href="{{ path('oneCategory',{'id':category.id}) }}">#}
-                   {#{{ category.name }}#}
-                {#</a>#}
-            {#</li>#}
-        {#{% endif %}#}
-    {#{% endfor %}#}
 
     <main>
+
+
+
         <!-- blog main wrapper start -->
         <div class="blog-main-wrapper pt-100 pb-100 pt-sm-58 pb-sm-58">
             <div class="container">
@@ -43,38 +20,37 @@
                     <div class="col-lg-12">
                         <div class="blog-wrapper">
                             <div class="row">
-                                {% for category in categorys %}
-                                    {% if category.status %}
-                                    <div class="col-lg-6">
-                                        <div class="blog-item-single">
-                                            <article class="blog-post">
-                                                <div class="blog-post-content">
-                                                   {% if category.children|length > 0 %}
-                                                    {#{{ dump(category.children[0].id) }}#}
-                                                    <a href="{{ path('oneCategory',{'id':category.id}) }}">
-                                                    {% else %}
-                                                        <a href="{{ path('product_list',{'id':category.id}) }}">
-                                                     {% endif %}
-                                                        <div class="blog-top">
-                                                            <div class="post-date-time">
-                                                                <span>{{ category.name }}</span>
-                                                            </div>
-                                                            <div class="post-blog-meta">
-                                                                {#<p>post by <a href="#">HasTech</a></p>#}
+                                {% set parent = 0 %}
+                                {% for id,category in cateArrays %}
+                                    {% set catId = category['id'] %}
+                                    {% if category['parent_id'] == parent %}
+                                        <div class="col-lg-6">
+                                            <a href="{{ path('oneCategory',{'id':catId}) }}">
+                                                <div class="blog-item-single">
+                                                    <article class="blog-post">
+                                                        <div class="blog-post-content">
+
+                                                                <div class="blog-top">
+                                                                    <div class="post-date-time">
+                                                                        <span>{{ category.name }}</span>
+                                                                    </div>
+                                                                    <div class="post-blog-meta">
+                                                                        {#<p>post by <a href="#">HasTech</a></p>#}
+                                                                    </div>
+                                                                </div>
+
+                                                            <div class="blog-thumb img-full">
+
                                                             </div>
                                                         </div>
-                                                    </a>
-                                                    <div class="blog-thumb img-full">
+                                                        <div class="blog-content">
+                                                            {#<h4><a href="blog-details.html">This is image Post For XipBlog</a></h4>#}
 
-                                                    </div>
+                                                        </div>
+                                                    </article>
                                                 </div>
-                                                <div class="blog-content">
-                                                    {#<h4><a href="blog-details.html">This is image Post For XipBlog</a></h4>#}
-
-                                                </div>
-                                            </article>
+                                            </a>
                                         </div>
-                                    </div>
                                     {% endif %}
                                 {% endfor %}
                             </div>

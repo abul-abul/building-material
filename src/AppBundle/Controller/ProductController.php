@@ -21,7 +21,9 @@ class ProductController extends BaseController
     {
         $em = $this->getDoctrine()->getManager();
         $productRepo =$em->getRepository("AppBundle:Product");
+
         $category =$em->getRepository("AppBundle:Category")->find($id);
+
         $categorys =$em->getRepository("AppBundle:Category")->findBy(['parent_category'=>null,'status'=>1]);
        // dump($categorys);die;
         $product = $productRepo->findBy(array('category' => $id));

@@ -235,7 +235,7 @@
                                     <div class="sidebar-body">
                                         <ul class="sidebar-category">
                                             {% for category in categorys %}
-                                                
+
                                                 {% if category.children|length > 0 %}
                                                     <li class="has-children"><a href="#">{{ category.name }}</a>
                                                         <ul class="children" style="display: none;">
@@ -243,7 +243,7 @@
                                                             {% for cat in category.children %}
 
                                                                 <li>
-                                                                    <a href="{{ path('product_list',{'id' : cat.id}) }}">{{ cat.name }}</a>
+                                                                    <a href="{{ path('oneCategory',{'id' : cat.id}) }}">{{ cat.name }}</a>
                                                                 </li>
 
                                                             {% endfor %}
@@ -251,7 +251,7 @@
                                                     </li>
                                                 {% else %}
                                                     <li>
-                                                        <a href="{{ path('product_list',{'id':category.id}) }}">
+                                                        <a href="{{ path('oneCategory',{'id':category.id}) }}">
                                                             {{ category.name }}
                                                         </a>
                                                     </li>

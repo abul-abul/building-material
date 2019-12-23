@@ -7,33 +7,7 @@
 
 {% block main %}
 
-    {#{% for category in categorys %}#}
-        {#{% if category.children|length > 0 %}#}
-            {#<li id="nav{{ category.id }}" class="toggle accordion-toggle">#}
-                {#<span class="icon-plus"></span>#}
-                {#<a class="menu-link" href="#">#}
 
-                        {#{{ category.name}}#}
-
-                {#</a>#}
-            {#</li>#}
-            {#<ul class="menu-submenu accordion-content">#}
-                {#{% for cat in category.children %}#}
-                    {#<li>#}
-                        {#<a class="head" href="{{ path('oneCategory',{'id':cat.id}) }}">#}
-                           {#{{ cat.name }}#}
-                        {#</a>#}
-                    {#</li>#}
-                {#{% endfor %}#}
-            {#</ul>#}
-        {#{% else %}#}
-            {#<li class="a menu_main">#}
-                {#<a class="menu-link" href="{{ path('oneCategory',{'id':category.id}) }}">#}
-                   {#{{ category.name }}#}
-                {#</a>#}
-            {#</li>#}
-        {#{% endif %}#}
-    {#{% endfor %}#}
 
     <main>
         <!-- blog main wrapper start -->
@@ -50,7 +24,7 @@
                                         <div class="blog-item-single">
                                             <article class="blog-post">
                                                 <div class="blog-post-content">
-                                                    <a href="{{ path('product_list',{'id':category.id}) }}">
+                                                    <a href="{{ path('oneCategory',{'id':category.id}) }}">
                                                         <div class="blog-top">
                                                             <div class="post-date-time">
                                                                 <span>{{ category.name }}</span>
