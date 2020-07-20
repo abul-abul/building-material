@@ -2,13 +2,140 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Category;
+use AppBundle\Entity\Product;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Application\Sonata\MediaBundle\Entity\Gallery;
+use Application\Sonata\MediaBundle\Entity\GalleryHasMedia;
+use Application\Sonata\MediaBundle\Entity\Media;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class MainController extends BaseController
 {
+    /**
+     * @param $binaryContent
+     * @param $filename
+     * @return UploadedFile
+     */
+    private function createTempFile($binaryContent,$filename) {
+
+        $temporaryFileName = tempnam(sys_get_temp_dir(), $filename);
+        file_put_contents($temporaryFileName, $binaryContent);
+        return new UploadedFile(
+            $temporaryFileName,
+            $filename
+        );
+    }
+
+    public function createSonataMedia($item){
+
+        //create media
+        $mediaManager = $this->get("sonata.media.manager.media");
+        $media = new Media();
+        $file = $item;
+        $filename = 'image.jpg';
+//        list($type, $file) = explode(';', $file);
+//        list(, $file)      = explode(',', $file);
+        $file = base64_decode($file);
+
+        $file = $this->createTempFile($file,$filename);
+        $media->setBinaryContent($file);
+        $media->setContext('default'); //contex you are using
+        $media->setProviderName('sonata.media.provider.image');
+
+        $mediaManager->save($media);
+
+
+
+        return $media;
+    }
+
+    /**
+     * @Route("/test", name="test")
+     * @Template()
+     */
+    function saveImageAction()
+    {
+
+        //https://anyconv.com/html-to-xml-converter/
+        //https://www.freefileconvert.com/file/8KLo3QEO2L26
+        //https://www.freeformatter.com/xml-to-json-converter.html#ad-output
+        //https://www.isolux.ru/krepezh-1/skobyanyye-izdeliya/ruchki-dvernyye.html?p=14
+        $em = $this->getDoctrine()->getManager();
+
+        $appPath = $this->container->getParameter('kernel.root_dir');
+        $webPath = realpath($appPath . '/../web/uploads/test.json');
+
+        $arrays = json_decode(file_get_contents($webPath), true);
+
+        $fins = [];
+
+        $previousValue = null;
+        foreach ($arrays['para'] as $key=>$array){
+
+            $fins[] = $array;
+
+        }
+        $arrays = array_chunk($fins,7);
+
+
+        foreach ($arrays as $key=>$array){
+            $imagesLink = $array[0]['inlinegraphic']['@fileref'];
+            if(isset($array[1]['ulink']['#text'])){
+                $title = $array[1]['ulink']['#text'];
+            }else{
+                $title = 'title';
+            }
+
+            $priceString = $array[4];
+            preg_match_all('!\d+!', $priceString, $matches);
+            $price = $matches[0][0].','.$matches[0][1];
+            $arrays[$key][0] = $imagesLink;
+            $arrays[$key][1] = $title;
+            $arrays[$key][4] = $price;
+
+//            $img = 'uploads/logo.png';
+//
+//            file_put_contents($img, file_get_contents($imagesLink));
+
+         //   $img = file_get_contents($imagesLink);
+         //   $data = base64_encode($img);
+         //   $media = $this->createSonataMedia($data);
+
+
+            //  $b64image = base64_encode(file_get_contents($imagesLink));
+            //dump($data);
+
+
+        }
+
+        $category =$em->getRepository("AppBundle:Category")->find(13);
+        foreach ($arrays as $array){
+            $product = new Product();
+            $imagesLink = $array[0];
+            $title = $array[1];
+            $price = $array[4];
+            $img = file_get_contents($imagesLink);
+            $data = base64_encode($img);
+            $media = $this->createSonataMedia($data);
+            $product->setName($title);
+            $product->setPrice($price);
+            $product->setImage($media);
+            $product->setCategory($category);
+            $em->persist($product);
+
+        }
+
+        $em->flush();
+
+
+
+        die;
+    }
+
     /**
      * @Route("/", name="home")
      * @Template()
