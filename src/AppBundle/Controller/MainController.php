@@ -54,6 +54,61 @@ class MainController extends BaseController
     }
 
     /**
+     * @param $fileArr
+     * @return Gallery
+     */
+    public function createGallery($file){
+
+        $em = $this->getDoctrine()->getManager();
+        $name = 'gallery';
+        $gallery = $this->createSonataGallery($name);
+        $i = 1;
+        $fileArr= array('data'=>$file);
+        foreach ($fileArr as $item){
+            //create media
+            $media = $this->createSonataMedia($item);
+            //create gallery has media
+            $galleryHasMedia = $this->createSonataGalleryHasMedia($media, $i);
+            $gallery->addGalleryHasMedia($galleryHasMedia);
+            $i++;
+        }
+        $em->persist($gallery);
+        $em->flush();
+
+        return $gallery;
+    }
+
+
+    /**
+     * @param $name
+     * @return Gallery
+     */
+    public function createSonataGallery($name){
+
+        $gallery = new Gallery();
+        $gallery->setName($name);
+        $gallery->setContext('default');
+        $gallery->setEnabled(true);
+        return $gallery;
+    }
+
+    /**
+     * @param $media
+     * @param $position
+     * @return GalleryHasMedia
+     */
+    public function createSonataGalleryHasMedia($media, $position){
+
+        $galleryHasMedia = new GalleryHasMedia();
+        $galleryHasMedia->setMedia($media);
+        $galleryHasMedia->setPosition($position);
+
+        return $galleryHasMedia;
+    }
+
+
+
+    /**
      * @Route("/test", name="test")
      * @Template()
      */
@@ -84,48 +139,56 @@ class MainController extends BaseController
 
         foreach ($arrays as $key=>$array){
             $imagesLink = $array[0]['inlinegraphic']['@fileref'];
-            if(isset($array[1]['ulink']['#text'])){
-                $title = $array[1]['ulink']['#text'];
+            if(strstr( $imagesLink, 'jpg' ) or strstr( $imagesLink, 'png' ) or strstr( $imagesLink, 'jpeg' )){
+                if(isset($array[1]['ulink']['#text'])){
+                    $title = $array[1]['ulink']['#text'];
+                }else{
+                    $title = 'title';
+                }
+
+                $priceString = $array[4];
+                preg_match_all('!\d+!', $priceString, $matches);
+
+                if(count($matches[0]) != 0){
+                    $price = $matches[0][0].','.$matches[0][1];
+                }else{
+                    $price = 0;
+                }
+
+                $arrays[$key][0] = $imagesLink;
+                $arrays[$key][1] = $title;
+                $arrays[$key][4] = $price;
+
             }else{
-                $title = 'title';
+                unset($arrays[$key]);
             }
 
-            $priceString = $array[4];
-            preg_match_all('!\d+!', $priceString, $matches);
-            $price = $matches[0][0].','.$matches[0][1];
-            $arrays[$key][0] = $imagesLink;
-            $arrays[$key][1] = $title;
-            $arrays[$key][4] = $price;
-
-//            $img = 'uploads/logo.png';
-//
-//            file_put_contents($img, file_get_contents($imagesLink));
-
-         //   $img = file_get_contents($imagesLink);
-         //   $data = base64_encode($img);
-         //   $media = $this->createSonataMedia($data);
-
-
-            //  $b64image = base64_encode(file_get_contents($imagesLink));
-            //dump($data);
 
 
         }
 
-        $category =$em->getRepository("AppBundle:Category")->find(13);
+
+        $category =$em->getRepository("AppBundle:Category")->find(16);
         foreach ($arrays as $array){
             $product = new Product();
             $imagesLink = $array[0];
             $title = $array[1];
-            $price = $array[4];
-            $img = file_get_contents($imagesLink);
-            $data = base64_encode($img);
-            $media = $this->createSonataMedia($data);
-            $product->setName($title);
-            $product->setPrice($price);
-            $product->setImage($media);
-            $product->setCategory($category);
-            $em->persist($product);
+            $price = $array[4].'руб.';
+            $productRepo =$em->getRepository("AppBundle:Product")->findOneBy(array('name'=>$title,'price'=>$price));
+           // dump($productRepo);die;
+            if(!$productRepo){
+                $img = file_get_contents($imagesLink);
+                $data = base64_encode($img);
+                $media = $this->createSonataMedia($data);
+                $gallery = $this->createGallery($data);
+                $product->setName($title);
+                $product->setPrice($price);
+                $product->setImage($media);
+                $product->setGallery($gallery);
+                $product->setCategory($category);
+                $em->persist($product);
+
+            }
 
         }
 
@@ -133,7 +196,7 @@ class MainController extends BaseController
 
 
 
-        die;
+        return $this->redirectToRoute('home');
     }
 
     /**
