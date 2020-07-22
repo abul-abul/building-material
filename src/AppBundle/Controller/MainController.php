@@ -109,10 +109,10 @@ class MainController extends BaseController
 
 
     /**
-     * @Route("/test", name="test")
+     * @Route("/test/{id}", name="test")
      * @Template()
      */
-    function saveImageAction()
+    function saveImageAction($id)
     {
 
         //https://anyconv.com/html-to-xml-converter/
@@ -168,12 +168,12 @@ class MainController extends BaseController
         }
 
 
-        $category =$em->getRepository("AppBundle:Category")->find(16);
+        $category =$em->getRepository("AppBundle:Category")->find($id);
         foreach ($arrays as $array){
             $product = new Product();
             $imagesLink = $array[0];
             $title = $array[1];
-            $price = $array[4].'руб.';
+            $price = $array[4].' руб.';
             $productRepo =$em->getRepository("AppBundle:Product")->findOneBy(array('name'=>$title,'price'=>$price));
            // dump($productRepo);die;
             if(!$productRepo){
